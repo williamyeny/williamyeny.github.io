@@ -1,0 +1,91 @@
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:200,300,400,700);
+
+html {
+    font-family: 'Raleway';
+    color:white;
+    background-color: #363636
+}
+
+h1 {
+    text-align: center;
+    font-size: 72;
+    padding-top: 30;
+    transition-duration: 0.5s;
+}
+
+h1:hover {
+    text-shadow: 3px 3px 3px #191919;
+    transition-duration: 0.5s;
+}
+
+li a {
+    color:cornflowerblue;
+    text-decoration: none;
+    font-weight: 700;
+    transition-duration: 0.5s;
+}
+
+li a:hover {
+    color:white;
+    transition-duration: 0.5s;
+    text-shadow: 2px 2px 3px #191919;
+}
+
+#sub {
+    text-align: center;
+    font-size: 36px;
+    margin-top:-50px;
+    padding-bottom: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+#showcase {
+    padding-top: 1;
+    padding-bottom: 5;
+    width:700;
+    margin:0 auto;
+    margin-bottom: 20;
+    background-color: #505050;
+    box-shadow: 10px 10px 10px #222222;
+}
+
+#showcase p {
+    text-align: center;
+    margin-left: 40;
+    margin-right: 40;
+}
+    
+
+article p {
+    margin-left: 300;
+    margin-right: 300;
+}
+
+ul {
+    list-style:none;
+    text-align: center;
+    margin:0;
+    padding:0;
+    margin-bottom: 50;
+}
+
+li {
+    display: inline;
+    padding-left: 10;
+    padding-right: 10;
+    padding-top: 5;
+    padding-bottom: 5;
+    margin:10;
+}
+
+canvas {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
