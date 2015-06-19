@@ -52,7 +52,7 @@ h2 {
     margin:0 auto;
     margin-bottom: 20;
     background-color: #505050;
-    box-shadow: 10px 10px 10px #222222;
+    box-shadow: 5px 10px 3px #222222;
 }
 
 #showcase p {
@@ -63,8 +63,8 @@ h2 {
     
 
 article p {
-    margin-left: 300;
-    margin-right: 300;
+    margin: 0 auto;
+    width: 50%;
 }
 
 ul {
