@@ -82,7 +82,7 @@ h2 {
 
 #link-showcase {
     margin:0 auto;
-    width: 50%;
+    width: 500;
     padding:1 30 30 30;
     background-color: #505050;
     text-align: center;
@@ -93,8 +93,9 @@ h2 {
 
 article p {
     margin: 0 auto;
-    width: 70%;
+    width: 700;
     margin-bottom: 30;
+    text-align: center;
 }
 
 nav ul {
