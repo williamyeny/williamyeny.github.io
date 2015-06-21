@@ -6,18 +6,14 @@
 html {
     font-family: 'Raleway';
     color:white;
-    background-color: #363636
+    background-color: #363636;
+    
 }
 
 h1 {
     text-align: center;
     font-size: 72;
     padding-top: 30;
-    transition-duration: 0.5s;
-}
-
-h1:hover {
-    text-shadow: 3px 3px 3px #191919;
     transition-duration: 0.5s;
 }
 
@@ -72,7 +68,7 @@ h2 {
     margin:0 auto;
     margin-bottom: 20;
     background-color: #505050;
-    box-shadow: 5px 10px 3px #222222;
+    box-shadow: 5px 5px 3px #222222;
 }
 
 #showcase p {
