@@ -97,6 +97,8 @@ h2 {
     margin-bottom: 20;
     background-color: #505050;
     box-shadow: 5px 5px 3px #222222;
+    border-radius: 10px;
+    border: 10px solid #666666
 }
 
 #showcase p {
@@ -143,4 +145,5 @@ canvas {
     text-align: center;
     box-shadow: 5px 5px 3px #222222;
     margin-bottom: 20;
-}
+    border-radius: 10px;
+    border: 10px solid #666666
