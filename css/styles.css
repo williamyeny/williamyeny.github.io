@@ -1,7 +1,5 @@
-
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-
 @import url(http://fonts.googleapis.com/css?family=Raleway:200,300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700);
 
 html {
     font-family: 'Raleway';
@@ -32,6 +30,35 @@ li a {
     margin-top: 10;
     
 }
+
+
+
+.play:before {
+    content:"PLAY";    
+}
+
+.source:before {
+    content:"SOURCE";
+}
+
+.play:before, .source:before {
+    padding-top: 5;
+    padding-bottom: 5;
+    display:inline-block;
+    background-color: cornflowerblue;
+    width:100%;
+    font-weight: 700;
+    transition-duration: 0.2s;
+    color:white;
+    margin-top: 10;
+}
+
+.play:hover:before, .source:hover:before {
+    transition-duration: 0.2s;
+    background-color: #FF4848;
+}
+
+
 
 #butt:hover {
     transition-duration: 0.2s;
@@ -77,17 +104,6 @@ h2 {
     margin-right: 40;
 }
 
-#link-showcase {
-    margin:0 auto;
-    width: 500;
-    padding:1 30 30 30;
-    background-color: #505050;
-    text-align: center;
-    box-shadow: 5px 5px 3px #222222;
-    margin-bottom: 20;
-}
-
-
 article p {
     margin: 0 auto;
     width: 700;
@@ -116,4 +132,14 @@ canvas {
     display:block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.link-showcase {
+    margin:0 auto;
+    width: 500;
+    padding:1 30 30 30;
+    background-color: #505050;
+    text-align: center;
+    box-shadow: 5px 5px 3px #222222;
+    margin-bottom: 20;
 }
