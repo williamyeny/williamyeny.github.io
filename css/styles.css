@@ -32,6 +32,9 @@ li a {
 }
 
 
+.full:before {
+    content:"VIEW FULL SIZE";
+}
 
 .play:before {
     content:"PLAY";    
@@ -41,7 +44,7 @@ li a {
     content:"SOURCE";
 }
 
-.play:before, .source:before {
+.play:before, .source:before, .full:before {
     padding-top: 5;
     padding-bottom: 5;
     display:inline-block;
@@ -51,9 +54,10 @@ li a {
     transition-duration: 0.2s;
     color:white;
     margin-top: 10;
+    text-align: center;
 }
 
-.play:hover:before, .source:hover:before {
+.play:hover:before, .source:hover:before, .full:hover:before {
     transition-duration: 0.2s;
     background-color: #FF4848;
 }
@@ -92,7 +96,9 @@ h2 {
 #showcase {
     padding-top: 40;
     padding-bottom: 5;
-    width:700;
+    padding-left: 50;
+    padding-right: 50;
+    width:600;
     margin:0 auto;
     margin-bottom: 20;
     background-color: #505050;
@@ -131,7 +137,7 @@ li {
     margin:10;
 }
 
-canvas {
+canvas, img {
     display:block;
     margin-left: auto;
     margin-right: auto;
@@ -140,10 +146,11 @@ canvas {
 .link-showcase {
     margin:0 auto;
     width: 500;
-    padding:1 30 30 30;
+    padding:1 30 20 30;
     background-color: #505050;
     text-align: center;
     box-shadow: 5px 5px 3px #222222;
     margin-bottom: 20;
     border-radius: 10px;
     border: 10px solid #666666
+}
