@@ -42,6 +42,11 @@ a{text-decoration:none}
   background-color:none;
 }
 
+#twitter {
+  width:400px;
+  margin:0 auto;
+}
+
 .button:hover {
   opacity:1;
   color:white;
@@ -128,6 +133,7 @@ h1 {
 }
 
 #top {
+  margin-bottom:20px;
   background-color:#2d6272;
   display:block;
   width:100%;
