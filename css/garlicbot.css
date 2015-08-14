@@ -3,6 +3,7 @@
 html {
   font-family:"Open Sans";
   color:white;
+  cursor:url('../img/garlic-cursor.png'), auto;
 }
 
 a{text-decoration:none}
