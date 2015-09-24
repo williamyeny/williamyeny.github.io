@@ -14,7 +14,12 @@
     vertical-align:top;
     margin-left:10px;
     margin-right:10px;
-    
+    text-align:center;
+    padding:15px;
+}
+
+.faq-sec p {
+    text-align:left;
 }
 
 .button:hover {
@@ -24,14 +29,11 @@
 }
 
 .faq-sec h2 {
-    background-color:#333333;
-    border-style:solid;
-    border-width:1px;
-    border-color:#333333;
-    border-radius:3px 3px 0px 0px;
-    color:white;
+    background-color:white;
+    color:#333333;
     font-weight:200;
     padding:3px;
+    font-weight:700;
 }
 
 .faq-sec-content {
@@ -39,7 +41,6 @@
     border-color:#333333;
     border-radius:0px 0px 3px 3px;
     padding:10px;
-    text-align:center;
     border-width:2px;
 }
 
@@ -81,11 +82,15 @@ h3 {
 }
 
 .material-icons {
-    font-size:100px;
+    font-size:110px;
     text-align:center;
-    color:#333333;
+    color:#e67e22;
     margin-top:40px;
     margin-bottom:40px;
+}
+
+i {
+    text-align:center;
 }
 
 #faq-container {
@@ -115,6 +120,18 @@ h3 {
 }
 
 @media screen and (max-width: 1120px) {
+    #top #top-sec h1 {
+        font-size:32px;
+    } 
+    
+    #top {
+        height:600px;
+    }
+    
+    h3 {
+        font-size:28px;
+    }
+    
     .faq-sec {
         width:80%;
         margin:0 auto;
