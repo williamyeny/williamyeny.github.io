@@ -4,6 +4,7 @@
     margin:0;
     padding:0;
     font-family:"Montserrat";
+    box-sizing: border-box;
 }
 
 .faq-sec {
@@ -73,6 +74,12 @@ h3 {
     text-align:center;
 }
 
+.button-container {
+    display:inline-block;
+    margin-top:15px;
+    margin-bottom:15px
+}
+
 .material-icons {
     font-size:100px;
     text-align:center;
@@ -82,7 +89,7 @@ h3 {
 }
 
 #faq-container {
-    width:1119px;
+    width:1120px;
     margin:0 auto;
     background-color:#ecf0f1;
 }
@@ -105,4 +112,19 @@ h3 {
     margin-left:5px;
     margin-right:5px;
     transition-duration:0.25s;
+}
+
+@media screen and (max-width: 1120px) {
+    .faq-sec {
+        width:80%;
+        margin:0 auto;
+        margin-top:20px;
+        margin-bottom:20px;
+        display:block;
+        
+    }
+    #faq-container {
+        margin:0;
+        width:100%;
+    }
 }
