@@ -15,8 +15,9 @@ $(document).ready(function () {
         }
         $("#output").html(html);
     });
-    $("form").submit(function() {
-        $("#output").prepend("<p class=\"fade-in\">" + $(".ss-q-short").val() + "</p>");
-        $(".ss-q-short").val('');        
-    });
+//     $("form").submit(function() {
+//         $("#output").prepend("<p class=\"fade-in\">" + $(".ss-q-short").val() + "</p>");
+//         $(".ss-q-short").val('');        
+//         return true;
+//     });
 }) ;
