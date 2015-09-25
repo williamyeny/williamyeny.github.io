@@ -7,6 +7,22 @@
     box-sizing: border-box;
 }
 
+h4 {
+    margin-bottom:10px;
+}
+
+#comp {
+    text-align:center;
+}
+
+.two-column {
+    text-align:center;
+    padding:15px;
+    padding-left:25px;
+    padding-right:25px;
+    display:inline-block;
+}
+
 .faq-sec {
     background-color:white;
     display:inline-block;
