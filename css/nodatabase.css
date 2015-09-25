@@ -6,12 +6,68 @@
     font-family:"Montserrat";
 }
 
+.fade-in {
+    animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 #top {
     background-image:url("/img/colorful.png");
     background-size:cover;
     height:800px;
     text-align:center;
     color:white;
+}
+
+.ss-q-short {
+    border-style:solid;
+    color:white;
+    width:400px;
+    height:35px;
+    padding-left:5px;
+    font-size:24px;
+    border-width:2px;
+    border-color:white;
+    border-radius:4px 0px 0px 4px;
+    background-color:transparent;
+}
+
+#output {
+    padding-top:20px;
+    padding-bottom:20px;
+    background-color:#333333;
+    color:white;
+    font-size:20px;
+    text-align:center;
+}
+
+.ss-q-short:focus {
+    outline:none;
+}
+
+#ss-submit {
+    color:white;
+    padding-left:5px;
+    padding-right:5px;
+    vertical-align:top;
+    height:39px;
+    margin-left:-7px;
+    background-color:transparent;
+    border-style:solid;
+    border-color:white;
+    border-width:2px;
+    border-radius:0px 4px 4px 0px;
+}
+
+#input-content {
+    width:500px;
+    display:block;
+    margin:0 auto;
+    margin-top:40px;
 }
 
 #top-text {

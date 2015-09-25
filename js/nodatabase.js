@@ -1,19 +1,22 @@
 $(document).ready(function () {
-    $("#submit").click(function() {
-//         $.post("https://docs.google.com/forms/d/1oHu_jq1caLN4ggKwbnh1KD1ntzXtqINiyAHX6c6JDZs/formResponse",
-//         {
-//             "entry.950472274": "ayy",
-//             "fbzx": "2199171180584603931"
-//         },
-//         function(data, status){
-        
-//         });
-        $.ajax({
-                url: "https://docs.google.com/forms/d/1oHu_jq1caLN4ggKwbnh1KD1ntzXtqINiyAHX6c6JDZs/formResponse",
-                data: {"entry.950472274": "ayy"},
-                type: "POST",
-                dataType: "xml",
-            });
+    var html = "";
+    var name = "";
+    $.getJSON("https://spreadsheets.google.com/feeds/cells/1eM7cYEGYzCCwE-q9UaDD72CYrdjNJ1hzOTs0FQfA56I/1/public/values?alt=json", function(data) {
+        for (i = data["feed"]["entry"].length - 1; i >= 0 ; i--) {
+            console.log(i);
+            realData = data["feed"]["entry"][i]["gs$cell"];
+            if (realData["col"] == 2 && realData["row"] != 1) {
+                name = realData["$t"]; 
+            } else {
+                name = "";
+            }
+            
+            html += ("<p>" + name + "</p>");
+        }
+        $("#output").html(html);
     });
-
+    $("form").submit(function() {
+        $("#output").prepend("<p class=\"fade-in\">" + $(".ss-q-short").val() + "</p>");
+        $(".ss-q-short").val('');        
+    });
 }) ;
