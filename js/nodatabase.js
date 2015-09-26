@@ -15,9 +15,13 @@ $(document).ready(function () {
         }
         $("#output").html(html);
     });
-//     $("form").submit(function() {
-//         $("#output").prepend("<p class=\"fade-in\">" + $(".ss-q-short").val() + "</p>");
-//         $(".ss-q-short").val('');        
-//         return true;
-//     });
+    $("form").submit(function(e) {
+        $("#output").prepend("<p class=\"fade-in\">" + $(".ss-q-short").val() + "</p>");
+        setTimeout(function(){ // Delay for Chrome
+            $(".ss-q-short").val('');
+        }, 100);
+        this.submit();        
+
+        
+    });
 }) ;
