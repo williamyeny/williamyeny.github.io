@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/styles.css">        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">    
         <script src="js/processing.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <div id="nav">
@@ -15,9 +17,41 @@
         </div>
         
         <section id="top">
-            <img src="img/logo-placeholder.png">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" width=262px>
+                <path fill="#FFF" id= "right" d="M69.694 48.04l-9.122 9.122-32.74-32.74 9.123-9.12z"/>
+                <path fill="#FFF" id = "left" d="M13.218 57.117l-9.122-9.122 32.74-32.74 9.12 9.123z"/>
+                <path fill="#FFF" id = "bottom" d="M13.3 44.2h47.3v12.9H13.3z"/>
+            </svg>
             <h1>William Ye</h1>
             <p>Still has trouble pitting avocados.</p>
+        </section>
+        
+        <section id="about">
+            <div class="about-row">
+                <div class = "about-sec">
+                    <i class="material-icons icon">code</i>
+                    <h1>Programmer</h1>
+                    <p>Coding is like building not physical stuff.</p>
+                </div>
+                <div class = "about-sec">
+                    <i class="material-icons">desktop_mac</i>
+                    <h1>Designer</h1>
+                    <p>Nothing's useful until it's pretty.</p>
+                </div>
+            </div>
+            <div class="about-row">
+                <div class = "about-sec">
+                    <i class="material-icons">mouse</i>
+                    <h1>Gamer</h1>
+                    <p>Trains competitiveness, pro strats.</p>
+                </div>
+                <div class = "about-sec">
+                    <img src="img/avocado.png" height=42 style="margin-top:8px;margin-bottom:8px;">
+                    <h1>Avocado</h1>
+                    <p>Smooth, nutty, and buttery.</p>
+                </div>
+            </div>
+            
         </section>
     </body>
 </html>
