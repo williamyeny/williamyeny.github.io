@@ -7,14 +7,17 @@
 }
 
 #nav {
-    height:100px;
+    height:80px;
     position:fixed;
     top:0px;
     left:0px;
     width:100%;
     background-color:#566473;
     text-align:center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
+
 
 #nav ul {
     text-decoration:none;
@@ -81,6 +84,7 @@
     display:inline-block;
     padding:15px;
     padding-bottom:25px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .about-row {
