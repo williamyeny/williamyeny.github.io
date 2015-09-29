@@ -76,7 +76,7 @@ h3 {
 #top {
     height:800px;
     width:100%;
-    background-image:url("/img/controller.png");
+    background-image:url("../img/controller.png");
     background-size:cover;
 }
 

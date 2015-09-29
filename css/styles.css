@@ -1,12 +1,45 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100);
 
 * {
-  margin:0;
-  padding:0;
-  font-family:"Roboto";
+    margin:0;
+    padding:0;
+    font-family:"Roboto";
+    color:white;
 }
 
-h3 {
+.button {
+    text-decoration:none;
+    font-weight:600;
+    color:#e91e63;
+    margin-right:20px;
+}
+
+.button-container {
+    position:absolute;
+    margin-top:0px;
+    transition-duration:0.25s;
+    opacity:0;
+    margin-left:10px;
+}
+
+.button-container-hover {
+    transition-duration:0.25s;
+    margin-top:-15px;
+    opacity:1;
+}
+
+.header p {
+    text-align:center;
+    color:white;
+    margin-top:-20px;
+    margin-bottom:20px;
+}
+
+p {
+    opacity:0.75;
+}
+
+.header h3 {
     color:white;
     text-align:center;
     font-size:36px;
@@ -23,11 +56,9 @@ h3 {
     margin-bottom:20px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition-duration:0.25s;
-    cursor:pointer;
 }
 
 .project-sec:hover {
-    position:relative;
     transition-duration:0.25s;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
@@ -41,9 +72,14 @@ h3 {
   transform: translateY(-50%);
 }
 
-.project-sec h2 {
+.project-text h2 {
     font-size:20px;
     margin-bottom:10px;
+}
+
+.project-text-h2-hover {
+    opacity:0;
+    transition-duration:0.25s;
 }
 
 .project-text {
@@ -53,6 +89,12 @@ h3 {
     padding:10px;
     width:100%;
     font-weight:200;
+    transition-duration:0.25s;
+}
+
+.project-text-hover {
+    transform:translateY(-50px);
+    transition-duration:0.25s;
 }
 
 #nav {
@@ -104,15 +146,12 @@ h3 {
     font-size:64px;
 }
 
-#top p {
-    color:#CED3D8;
-}
-
 #top img {
     margin:20px;
 }
 
 #top p {
+    color:white;
     font-size:22px;
 }
 
@@ -141,7 +180,7 @@ h3 {
 }
 
 .about-sec p {
-    color:#CED3D8;
+    color:white;
     font-size:14px;
     margin-top:7px;
     font-weight:200;
@@ -200,9 +239,6 @@ body {
 }
 
 @media screen and (max-width:600px) {
-    .project-sec {
-        width:70%;
-    }
     .about-sec {
         width:70%;
     }
@@ -218,5 +254,11 @@ body {
     }
     svg {width:100px;}
     
+}
+
+@media screen and (max-width:700px) {
+    .project-sec {
+        width:70%;
+    }
 }
 
