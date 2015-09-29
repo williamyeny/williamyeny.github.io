@@ -144,7 +144,7 @@ h3 {
     color:#CED3D8;
     font-size:14px;
     margin-top:7px;
-   
+    font-weight:200;
 }
 
 .icon {
@@ -202,6 +202,13 @@ body {
 @media screen and (max-width:600px) {
     .project-sec {
         width:70%;
+    }
+    .about-sec {
+        width:70%;
+    }
+    #nav li {
+        margin-left:3px;
+        margin-right:3px;
     }
 }
 
