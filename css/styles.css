@@ -11,7 +11,8 @@
     text-decoration:none;
     font-weight:600;
     color:#ff4081;
-    margin-right:20px;
+    margin-left:10px;
+    margin-right:10px;
 }
 
 .button-container {
@@ -19,7 +20,6 @@
     margin-top:0px;
     transition-duration:0.25s;
     opacity:0;
-    margin-left:10px;
 }
 
 .button-container-hover {
@@ -259,6 +259,10 @@ body {
         width:70%;
     }
     #nav li {
+        margin-left:0px;
+        margin-right:0px;
+    }
+    #nav li a {
         margin-left:3px;
         margin-right:3px;
     }
