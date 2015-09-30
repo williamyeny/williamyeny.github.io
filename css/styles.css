@@ -10,7 +10,7 @@
 .button {
     text-decoration:none;
     font-weight:600;
-    color:#e91e63;
+    color:#ff4081;
     margin-right:20px;
 }
 
@@ -105,6 +105,7 @@ p {
     width:100%;
     background-color:#566473;
     text-align:center;
+    z-index:99;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
@@ -131,7 +132,7 @@ p {
 }
 
 #nav a:hover {
-    color:#e91e63;
+    color:#ff4081;
     transition-duration:0.25s;
 }
 
@@ -242,10 +243,7 @@ body {
     .about-sec {
         width:70%;
     }
-    #nav li {
-        margin-left:3px;
-        margin-right:3px;
-    }
+
     #top h1 {
         font-size:42px;
     }
@@ -259,6 +257,10 @@ body {
 @media screen and (max-width:700px) {
     .project-sec {
         width:70%;
+    }
+    #nav li {
+        margin-left:3px;
+        margin-right:3px;
     }
 }
 
