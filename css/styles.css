@@ -7,12 +7,35 @@
     color:white;
 }
 
+canvas {
+    width:600px;
+    margin:0 auto;
+}
+
+.canvas-container {
+    text-align:center;
+}
+
+.canvas-container-hover {
+    height:600px;
+    margin-top:15px;
+    max-height:600px;
+    transition-duration(25s);
+}
+
 .button {
     text-decoration:none;
     font-weight:600;
     color:#ff4081;
     margin-left:10px;
     margin-right:10px;
+    cursor:pointer;
+    pointer-events:auto;
+}
+
+.button-hidden {
+   pointer-events: none;
+   cursor: default;
 }
 
 .button-container {
@@ -58,7 +81,7 @@ p {
     transition-duration:0.25s;
 }
 
-.project-sec:hover {
+.project-sec-hover {
     transition-duration:0.25s;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
@@ -75,6 +98,7 @@ p {
 .project-text h2 {
     font-size:20px;
     margin-bottom:10px;
+    transition-duration:0.25s;
 }
 
 .project-text-h2-hover {
