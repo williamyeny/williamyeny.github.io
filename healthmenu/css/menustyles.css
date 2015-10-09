@@ -123,3 +123,15 @@ body {
     display:table-cell;
     vertical-align:bottom;
 }
+
+@media screen and (max-width:450px) {
+    .sec {
+        width:90%;
+    }
+    .text-container {
+        width:90%;
+    }
+    .top {
+        padding:20px;
+    }
+}
