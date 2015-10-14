@@ -1,8 +1,8 @@
-var foods = ["Stuffed Potato Skins", "French Fries", "Chicken Wings","Herb Roasted Prime Rib","Ultimate Fondue","Chicken Fried Steak"];
-var calories = ['372','245.8','1,992','1,400','1,490','758','468','1,660','1,298'];
-var carbs = ['43.3g','32.8g','32g','34.9g','42.6g','40.6g','40g','224g','172g'];
-var fat = ['15.9g','12.00g','165g','71g','40g','30g','13g','51g','31g'];
-var protein = ['17.6g','3.8g','18g','40g','19g','30g','3.6g','0g','0g'];
+var foods = ["Stuffed Potato Skins", "French Fries", "Chicken Wings","Herb Roasted Prime Rib","Ultimate Fondue","Chicken Fried Steak","Cinnamon Rolls with Icing","Chocolate Chip Cookie Sundae","Blue Ribbon Brownie"];
+var calories = ['372','245.8','1,992','1,400','1,490','758','468','1,660','1,298','468','1,660','1,298'];
+var carbs = ['43.3g','32.8g','32g','34.9g','42.6g','40.6g','40g','224g','172g','40g','224g','172g'];
+var fat = ['15.9g','12.00g','165g','71g','40g','30g','13g','51g','31g','13g','51g','31g'];
+var protein = ['17.6g','3.8g','18g','40g','19g','30g','3.6g','0g','0g','3.6g','0g','0g'];
 var description = [
     'filler text1',
     'wowie whoa',
@@ -40,8 +40,15 @@ $(document).ready(function() {
             inf.prepend(description[num]);
         }
         //insert animation code here
+        inf.css("animation","fade-in 0.25s")
     });
     $(document).on('click', '.back', function () {
-        $(this).parent().parent().remove();
+        $(this).parent().parent().css("animation","fade-out 0.25s");
+        $(this).parent().parent().one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+            $(this).remove();
+//             console.log($(this).html());
+        
+        });
+        
     });
 });
