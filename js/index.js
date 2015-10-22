@@ -31,6 +31,7 @@ $( document ).ready(function() {
 //     });
     $(".processing").click(function() {
         console.log("clickeroony");
+        $(".canvas-container").remove();
         var projectName = $(this).parent().parent().find("h2").text().replace(/ /g, "_").toLowerCase();   
         console.log(projectName);
         var canvasRef = document.createElement('canvas');
