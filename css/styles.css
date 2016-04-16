@@ -7,6 +7,10 @@
     color:white;
 }
 
+a {
+  cursor: pointer;
+}
+
 canvas {
     width:600px;
     margin:0 auto;
