@@ -2,12 +2,12 @@
 <html>
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">    
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/processing.min.js"></script>
         <script src="js/index.js"></script>
-        
-        
+
+
         <link rel="icon" type="image/png" href="img/logo1.png"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -15,12 +15,13 @@
         <div id="nav">
             <ul>
                 <li><a href="#top" class="button">HOME</a></li>
-                <li><a href="#about" class="button">ABOUT</a></li>
-                <li><a href="#projects" class="button">PROJECTS</a></li>
+                <!-- <li><a href="#about" class="button">ABOUT</a></li> -->
+                <li><a href="#projects" class="button">WEB</a></li>
+                <li><a href="#scripts" class="button">SCRIPTS</a></li>
                 <li><a href="#processing" class="button">PROCESSING</a></li>
             </ul>
         </div>
-        
+
         <section id="top">
 <!--             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" width=150px>
                 <path fill="#FFF" id= "right" d="M69.694 48.04l-9.122 9.122-32.74-32.74 9.123-9.12z"/>
@@ -29,7 +30,7 @@
             </svg> -->
 <!--             <img src="img/logo1.png" width=100 style="margin-top:40px; margin-bottom:50px;"> -->
             <h1>William Ye</h1>
-            <p>Coding, designing, etc.</p>
+            <!-- <p>Coding, designing, etc.</p> -->
         </section>
         <div class="header" style="margin-top:10px;">
             <p><a id="copy-email" data-clipboard-target="#copy-email">williamyeny@gmail.com</a></p>
@@ -39,33 +40,43 @@
                 <div class = "about-sec">
                     <i class="material-icons icon">code</i>
                     <h1>Programmer</h1>
-                    <p>Web development and more.</p>
+                    <p>Front-end, back-end, game dev, etc.</p>
                 </div>
                 <div class = "about-sec">
                     <i class="material-icons">desktop_mac</i>
                     <h1>Designer</h1>
-                    <p>Flat design fanatic.</p>
+                    <p>Flat design, UI, animation.</p>
                 </div>
             </div>
-            <div class="about-row">
+            <!-- <div class="about-row">
                 <div class = "about-sec">
                     <i class="material-icons">mouse</i>
                     <h1>Gamer</h1>
                     <p>Trains competitiveness and collaboration.</p>
                 </div>
-                <div class = "about-sec">
+                <div class = "about-sec"> -->
 <!--                    <img src="img/avocado.png" height=42 style="margin-top:8px;margin-bottom:8px;">-->
-                    <i class="material-icons">group</i>
+                    <!-- <i class="material-icons">group</i>
                     <h1>Leader</h1>
                     <p>Not afraid to direct and lead.</p>
                 </div>
-            </div>
+            </div> -->
         </section>
         <div class="header">
-            <h3>Projects</h3>
-            <p>Cool stuff I worked on in a team or by myself.</p>
+            <h3>Web</h3>
+            <p>Web apps and static sites.</p>
         </div>
         <section id="projects">
+            <div class="project-sec">
+                <div class="project-text">
+                    <h2>Geographical Sentiment Analysis of Trump-Related Tweets</h2>
+                    <p>Shows the location of live Trump-related tweets as well as the sentiment (whether the tweet has positive or negative "feeling") in bars.</p>
+                </div>
+                <div class="button-container">
+                    <a href="http://tweet-sentimental-globe.herokuapp.com/" class="button button-hidden">VIEW PROJECT</a>
+                    <a href="https://github.com/williamyeny/tweet-sentimental-globe" class="button button-hidden">SOURCE</a>
+                </div>
+            </div>
             <div class="project-sec">
                 <div class="project-text">
                     <h2>Millertestbot</h2>
@@ -122,7 +133,7 @@
                     <a href="https://github.com/williamyeny/teamy" class="button button-hidden">SOURCE</a>
                 </div>
             </div>
-            
+
             <div class="project-sec">
                 <div class="project-text">
                     <h2>Drive Database</h2>
@@ -165,16 +176,6 @@
             </div>
             <div class="project-sec">
                 <div class="project-text">
-                    <h2>Garlicbot</h2>
-                    <p>A rad Twitter bot that retweets garlic! Suspended, unfortunately. Fun fact: wrote my college essay on this.</p>
-                </div>
-                <div class="button-container">
-                    <a href="/garlicbot.html" class="button button-hidden">VIEW PROJECT</a>
-                    <a href="https://github.com/williamyeny/garlicbot" class="button button-hidden">SOURCE</a>
-                </div>
-            </div>
-            <div class="project-sec">
-                <div class="project-text">
                     <h2>Duddlerun</h2>
                     <p>A fun little game my teammates and I created in only a few hours. The concept: hit an obstacle, lose legs. Grab some radioactive material: grow legs!</p>
                 </div>
@@ -202,6 +203,22 @@
                     <a href="healthmenu/index.html" class="button button-hidden">VIEW PROJECT</a>
                     <a href="https://github.com/williamyeny/williamyeny.github.io/tree/master/healthmenu" class="button button-hidden">SOURCE</a>
                 </div>
+            </div>
+          </section>
+          <div class="header">
+              <h3>Scripts</h3>
+              <p>Bots/automation and data.</p>
+          </div>
+          <section id="scripts">
+            <div class="project-sec">
+              <div class="project-text">
+                  <h2>Garlicbot</h2>
+                  <p>A rad Twitter bot that retweets garlic! Suspended, unfortunately. Fun fact: wrote my college essay on this.</p>
+              </div>
+              <div class="button-container">
+                  <a href="/garlicbot.html" class="button button-hidden">VIEW PROJECT</a>
+                  <a href="https://github.com/williamyeny/garlicbot" class="button button-hidden">SOURCE</a>
+              </div>
             </div>
             <div class="project-sec">
                 <div class="project-text">
@@ -288,11 +305,9 @@
                     <a href="https://github.com/williamyeny/vroom" class="button button-hidden">SOURCE</a>
                 </div>
             </div>
-        </section>        
-        
+        </section>
+
         <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
         <script>new Clipboard('#copy-email');</script>
     </body>
 </html>
-
-    
