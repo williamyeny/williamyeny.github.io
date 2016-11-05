@@ -4,11 +4,20 @@
     margin:0;
     padding:0;
     font-family:"Roboto";
-    color:white;
+    color:#181818;
 }
 
 a {
   cursor: pointer;
+  text-decoration:none;
+  color:#b0b0b0;
+  font-weight:600;
+  transition-duration:0.25s;
+}
+
+a:hover {
+  color:#181818;
+  transition-duration:0.25s;
 }
 
 canvas {
@@ -29,12 +38,8 @@ canvas {
 }
 
 .button {
-    text-decoration:none;
-    font-weight:600;
-    color:#ff4081;
     margin-left:10px;
     margin-right:10px;
-    cursor:pointer;
     pointer-events:auto;
 }
 
@@ -58,9 +63,8 @@ canvas {
 
 .header p {
     text-align:center;
-    color:white;
     margin-top:-20px;
-    margin-bottom:20px;
+    margin-bottom:40px;
 }
 
 p {
@@ -68,7 +72,6 @@ p {
 }
 
 .header h3 {
-    color:white;
     text-align:center;
     font-size:36px;
     font-weight:300;
@@ -76,9 +79,13 @@ p {
     margin-top:10px;
 }
 
+.header {
+  margin-top:50px;
+}
+
 .project-sec {
     width:600px;
-    background:#566473;
+    background:white;
     padding:15px;
     margin:0 auto;
     margin-bottom:20px;
@@ -117,7 +124,7 @@ p {
     vertical-align:top;
     padding:10px;
     width:100%;
-    font-weight:200;
+    font-weight:400;
     transition-duration:0.25s;
 }
 
@@ -132,13 +139,11 @@ p {
     top:0px;
     left:0px;
     width:100%;
-    background-color:#566473;
+    background-color:white;
     text-align:center;
     z-index:99;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
-
-
 
 #nav ul {
     text-decoration:none;
@@ -154,19 +159,15 @@ p {
 }
 
 #nav a {
-    text-decoration:none;
-    color:#CED3D8;
-    font-weight:600;
-    transition-duration:0.25s;
+
 }
 
 #nav a:hover {
-    color:#ff4081;
-    transition-duration:0.25s;
+
 }
 
 #top {
-    margin-top:-20px;
+    margin-top:-50px;
     text-align:center;
     color:white;
     margin-bottom:0px;
@@ -181,7 +182,7 @@ p {
 }
 
 #top p {
-    color:white;
+    color:#181818;
     font-size:22px;
 }
 
@@ -198,8 +199,8 @@ p {
     margin-right:10px;
     margin-bottom:20px;
     width:300px;
-    color:white;
-    background-color:#566473;
+    color:#181818;
+    background-color:white;
     display:inline-block;
     padding:15px;
     padding-bottom:25px;
@@ -211,10 +212,10 @@ p {
 }
 
 .about-sec p {
-    color:white;
+    color:#181818;
     font-size:14px;
     margin-top:7px;
-    font-weight:200;
+    font-weight:400;
 }
 
 .icon {
@@ -230,10 +231,11 @@ p {
 section {
   padding-top: 200px;
   margin-top: -200px;
+
 }
 
 body {
-    background-color:#5c6d7e;
+    background-color:#f4f4f4;
 }
 
 @keyframes left {
