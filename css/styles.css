@@ -196,7 +196,7 @@ p {
     margin-top:-30px;
     margin-bottom:80px;
     text-align:left;
-    max-width: 400px;
+    width: 500px;
     background-color:white;
     padding:15px 20px 15px 20px;
 }
@@ -283,9 +283,10 @@ body {
         width:70%;
     }
 
-    #top h1 {
+    /*#top h1 {
         font-size:42px;
-    }
+    }*/
+
     #top p {
         font-size:20px;
     }
@@ -304,5 +305,10 @@ body {
     #nav li a {
         margin-left:3px;
         margin-right:3px;
+    }
+
+    #about {
+      width:70%;
+      font-size:14px;
     }
 }
