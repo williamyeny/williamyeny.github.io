@@ -193,8 +193,12 @@ p {
 #about {
 
     margin:0 auto;
-    text-align:center;
-    margin-top:-150px;
+    margin-top:-30px;
+    margin-bottom:80px;
+    text-align:left;
+    max-width: 400px;
+    background-color:white;
+    padding:15px 20px 15px 20px;
 }
 
 /*.about-sec {
@@ -214,11 +218,11 @@ p {
     font-size:14px;
     margin-top:7px;
     font-weight:400;
-}
+}*/
 
 .icon {
     font-size:42px;
-}*/
+}
 
 .material-icons {
     font-size:42px;
