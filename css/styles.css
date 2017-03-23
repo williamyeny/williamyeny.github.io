@@ -181,6 +181,10 @@ p {
     font-weight:300;
 }
 
+h1 {
+  text-align: center;
+}
+
 #top img {
     margin:20px;
 }
