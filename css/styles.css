@@ -15,7 +15,7 @@
 
   min-height:100vh;
   max-width: 400px;
-  margin: -50px auto 0 auto;
+  margin: 0 auto;
   padding:0px 40px;
 }
 
@@ -38,6 +38,10 @@ a {
   margin-right: 12px;
   border-bottom: 2px solid #4285f4;
   word-wrap: break-word;
+}
+
+div:last-child {
+  margin-bottom:70px;
 }
 
 a:hover {
