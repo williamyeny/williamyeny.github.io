@@ -29,10 +29,18 @@ h1  {
   /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
 }
 
-p {
+.role {
   color:#181818;
-  margin: 0px 0px 10px 0px;
-  font-size:1.2em;
+  margin: 0px 0px 20px 0px;
+}
+
+.subtitle {
+  color:#575757;
+  margin-bottom: 3px;
+}
+
+.sec {
+  font-size:1.2em; 
 }
 
 a {
