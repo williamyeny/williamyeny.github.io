@@ -50,6 +50,8 @@
           "stop",
           "showCode",
           "getSessionUrl",
+          "addCallStatusListener",
+          "removeCallStatusListener"
         ],
         noop = () => {},
         noopModule = {
@@ -60,6 +62,8 @@
           stop: noop,
           showCode: noop,
           getSessionUrl: noop,
+          addCallStatusListener: noop,
+          removeCallStatusListener: noop
         };
       let Cohere = disableLoad ? noopModule : (window.Cohere = []);
       if (!disableLoad) {
@@ -85,6 +89,7 @@
         segmentIntegration: true,
       });
       console.log("inited");
+      window.Cohere.addCallStatusListener((state) => alert(`state ${state}`));
     </script>
     <title>Will Ye</title>
     <link rel="icon" type="image/png" href="img/logo1.png" />
