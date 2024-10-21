@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to store psychedelic mushrooms long-term with minimal potency loss"
+title:  "How to store psychedelic mushrooms with minimal potency loss"
 description: 
 date:   2024-10-20 00:24:30 +0000
 # categories: jekyll update
