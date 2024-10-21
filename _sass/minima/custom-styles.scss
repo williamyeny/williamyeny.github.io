@@ -32,25 +32,34 @@ h3 {
     font-weight: 600;
 }
 
-h2 {
+.post-content h2 {
     font-weight: 600;
+    font-size: 1.3rem
 }
 
-h1 {
+.post-content h1 {
     font-weight: 600;
+    font-size: 1.4rem
 }
 
 .post-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: -.01em;
 }
 
 @media screen and (min-width: 800px) {
 
-    .post-title,
-    .post-content h1 {
+    .post-title {
         font-size: 1.875rem;
+    }
+
+    .post-content h1 {
+        font-size: 1.775rem;
+    }
+
+    .post-content h2 {
+        font-size: 1.5rem;
     }
 }
 
@@ -75,4 +84,8 @@ img.w75 {
     border-top: 1px solid #e8e8e8;
     padding-top: 24px;
     margin-top: 24px;
+}
+
+blockquote {
+    font-size: 16px;
 }
