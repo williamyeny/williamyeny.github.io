@@ -9,17 +9,17 @@ At [Ramp](https://ramp.com/), we provide finance software for businesses, and on
 
 The receipt matching system works great most of the time, but occasionally, a customer's receipts will consistently fail to match. More often than not, this is due to a configuration issue for the specific customer, which will require manual intervention instead of broad changes to the receipt matching system.
 
-One of our goals is to become more proactive at detecting these specific cases. For example, if a user or business submits 100 receipts but only 10 of them match, we should be alerted instead of waiting for a complaint. So, how do we find out if someone is having a bad time with receipt matching?
+One of our goals is to become more proactive at detecting these specific cases. For example, if a customer submits 100 receipts but only 10 of them match, we should be alerted instead of waiting for a complaint. So, how do we find out if someone is having a bad time with receipt matching?
 
 ## A naive approach
 
-Doesn't sound too hard, right? For a user or business (depending on granularity), we could divide the number of receipts that didn't match by the total number of receipts, and then sort. For example, someone who had 4 out of 5 receipts that failed to match would take priority over someone who had 2 out of 10 receipts that failed to match.
+Doesn't sound too hard, right? For one customer (a `business`), we could divide the number of receipts that didn't match by the total number of receipts, and then sort. For example, a business with 4 out of 5 receipts that failed to match would take priority over a business with 2 out of 10 receipts that failed to match.
 
-Except this doesn't work when trying to find the *worst* experiences out of many users or businesses. For example, let's say we have 
-* User A, who submitted 3 receipts and 2 didn't match
-* User B, who submitted 300 receipts and 180 failed to match
+Except this doesn't work when trying to find the *worst* experiences out of many businesses. For example, let's say we have 
+* Business A, who submitted 3 receipts and 2 didn't match
+* Business B, who submitted 300 receipts and 180 failed to match
 
-User A has a worse ratio than User B, but we definitely care more about User B. User A could've just accidentally uploaded the wrong files once, but User B is almost certainly experiencing a systemic issue. 
+Business A has a worse ratio than Business B, but we definitely care more about Business B. Business A could've just accidentally uploaded the wrong files once, but Business B is almost certainly experiencing a systemic issue. 
 
 The problem? We don't adjust the scoring with sample size.
 
@@ -31,17 +31,17 @@ The algorithm that they decided on was the Wilson score interval, invented in 19
 
 ![Wilson score interval formula](/assets/wilson-score-interval.png)
 
-The way this works is that the formula tries to "predict" the final ratio of upvotes vs. downvotes (or in my case, the ratio between matches and non-matches). Another way to think about it is that it balances the ratio with the uncertainty of a small number of observations. Of course, this uncertainty means that you'll have to set a confidence interval (I chose 95%, the reason is left as an exercise to the reader).
+The way this works is that the formula tries to "predict" the final ratio of upvotes vs. downvotes, or in my case, the ratio between matches and non-matches. Another way to think about it is that it balances the ratio with the uncertainty of a small number of observations. Of course, this uncertainty means that you'll have to set a confidence interval (I chose 95%, the reason is left as an exercise to the reader).
 
 ## Does it work?
 
-I went ahead and implemented this in a Jupyter notebook, calculating the "bad match" score for each customer:
+I went ahead and implemented this in a Jupyter notebook, calculating a score (`bad_match_score`) for each business that represents how bad receipt matching is for them:
 
 ![Wilson score interval implementation](/assets/wilson-implementation.png){:.w75}
 
 It worked pretty well! Notice how the businesses with some matched receipts out of thousands of submitted receipts are prioritized over businesses with 0 matched receipts out of only a few hundred.
 
-(Side note: don't be alarmed by the high "match not found" rates, I was too lazy to filter out certain irrelevant receipts. The actual rate is much lower, even for outliers.)
+Side note: don't be alarmed by the high "match not found" rates, I was too lazy to filter out certain irrelevant receipts. The actual rate is much lower, even for outliers.
 
 ## What's next?
 
