@@ -17,7 +17,7 @@ Before we even think about buying a grow light, our first goal should be figurin
 
 I mostly own a species of cacti called [Trichocereus pachanoi](https://en.wikipedia.org/wiki/Trichocereus_macrogonus_var._pachanoi) (colloquially known as "San Pedro").
 
-To figure out how much sun the species needs, we need to find its habitat. Some quick research shows that the plant is native to Ecuador, Peru, and Colombia, specifically the mountainous region.
+To figure out how much sun the species needs, we need to find its habitat. [Some quick research](https://www.llifle.com/Encyclopedia/CACTI/Family/Cactaceae/8471/Trichocereus_pachanoi#:~:text=Trichocereus%20pachanoi&text=Origin%20and%20Habitat%3A%20Mountains%20of,3300%20metres%20above%20sea%20level.) shows that the plant is native to Ecuador, Peru, and Colombia, specifically the mountainous region.
 
 ![San Pedro habitat](/assets/trich-habitat.png)
 
@@ -29,6 +29,8 @@ With another quick search on Google, we can find [the DLI values on a map](https
 
 However, don't forget we're looking for the _mountainous_ regions. Looking at the map, we can say that 30-38 mols/m^2/day is a good starting point.
 
+![Colombia/Ecuador DLI values annotated](/assets/dli-values-annotated.png){:.75}
+
 # Converting DLI to PPFD
 
 The nice part about DLI is that we can convert it to photosynthetic photon flux density (PPFD), and we can use PPFD evaluate grow lights by.
@@ -37,9 +39,9 @@ Before we calculate the PPFD, we'll need to think the photoperiod. You can think
 
 Now, let's convert the 30-38 DLI to PPFD using an [online calculator](https://www.nexsel.tech/how-to-calculate-ppfd-from-dli.php).
 
-![30 DLI conversion](/assets/30-dli.png){:.w50}
+![30 DLI conversion](/assets/30-dli.png){:.w75}
 
-![38 DLI conversion](/assets/38-dli.png){:.w50}
+![38 DLI conversion](/assets/38-dli.png){:.w75}
 
 Now that we have our PPFD value range of 700-880, we can go ahead and shop for grow lights!
 
@@ -47,17 +49,17 @@ Now that we have our PPFD value range of 700-880, we can go ahead and shop for g
 
 When looking for a grow light online, the manufacturer should have a PPFD chart in the listing:
 
-![PPFD chart](/assets/growlight-ppfd.png){:.75}
+![PPFD chart](/assets/growlight-ppfd.png)
 
 If you don't see this chart, don't buy!
 
 There are a couple things to look out for. We need to note how much of an area this grow light covers, and how far above our plants we should mount the grow light. All these are noted in the image.
 
-![PPFD chart annotated](/assets/growlight-ppfd-annotated.png){:.50}
+![PPFD chart annotated](/assets/growlight-ppfd-annotated.png){:.w75}
 
 Looking at the PPFD values in the chart, our plants would be happy for the most part, but they might not get enough light if we put them in the outer areas:
 
-![PPFD chart annotated](/assets/growlight-ppfd-outer.png){:.50}
+![PPFD chart annotated](/assets/growlight-ppfd-outer.png){:.w75}
 
 We can look for another grow light with higher PPFD values, but there are tricks we can do.
 
