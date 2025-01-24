@@ -33,9 +33,9 @@ However, don't forget we're looking for the _mountainous_ regions. Looking at th
 
 # Converting DLI to PPFD
 
-The nice part about DLI is that we can convert it to photosynthetic photon flux density (PPFD), and we can use PPFD evaluate grow lights by.
+The nice part about DLI is that we can convert it to photosynthetic photon flux density (PPFD). PPFD is how grow light intensity is measured and is usually published on product pages.
 
-Before we calculate the PPFD, we'll need to think the photoperiod. You can think about it as "how long do I want my grow light on a day?", but don't forget that the shorter the photoperiod, the more intense the light will have to be. I chose 12 hours.
+Before we calculate the PPFD, we'll need to come up with the photoperiod. You can think about it as "how long do I want my grow light on a day?", but don't forget that the shorter the photoperiod, the more intense the light will have to be. I chose 12 hours.
 
 Now, let's convert the 30-38 DLI to PPFD using an [online calculator](https://www.nexsel.tech/how-to-calculate-ppfd-from-dli.php).
 
@@ -61,7 +61,7 @@ Looking at the PPFD values in the chart, our plants would be happy for the most 
 
 ![PPFD chart annotated](/assets/growlight-ppfd-outer.png){:.w75}
 
-We can look for another grow light with higher PPFD values, but there are tricks we can do.
+We can look for another grow light with higher PPFD values, but there are tricks we can do less optimal grow lights.
 
 First, we can recalculate the PPFD values with a longer photoperiod, which should result in a lower PPFD requirement.
 
@@ -78,3 +78,4 @@ Now all we have to do buy the grow light and follow all the information we gathe
 - Some manufacturers are not super honest about their PPFD ratings. You can find [3rd party tests](https://youtu.be/TmpQ7TO-szA?si=he8AFGRNag8EPOI8&t=167) or test the PPFD yourself using a light meter or phone app.
 - Do NOT buy those stupid purple lights. They do not work.
 - If your grow light doesn't come with a timer, you'll need to purchase an [outlet timer](https://www.amazon.com/Century-Indoor-24-Hour-Mechanical-Outlet/dp/B01LPSGBZS)
+- Avoid having your grow light on for 24 hours/day. Not only will your electricity bill skyrocket, but many plants actually require periodic darkness, e.g. the [CAM pathway for gas exchange](https://en.wikipedia.org/wiki/Crassulacean_acid_metabolism).
