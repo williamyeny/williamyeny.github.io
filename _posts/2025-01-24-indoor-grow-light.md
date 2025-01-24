@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Finding the right grow light for an indoor plant -- a plant-first approach"
+title: "Choosing the right grow light for an indoor plant: a plant-first approach"
 description:
 date: 2025-01-24 12:00:00 +0000
 ---
