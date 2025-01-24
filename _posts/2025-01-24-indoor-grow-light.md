@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Choosing the right grow light for an indoor plant: a plant-first approach"
+title: "Finding the right grow light for indoor plants: a plant-first approach"
 description:
 date: 2025-01-24 12:00:00 +0000
 ---
 
-I have a small collection of cacti. Given how I live in New York City and keeping them outside isn't an option, I've had to grow them indoors.
+I have a small collection of cacti. In New York City, it isn't warm or sunny enough to grow cacti outdoors, so I've had to grow them indoors.
 
 ![My cacti](/assets/cacti.JPEG){:.w50}
 
