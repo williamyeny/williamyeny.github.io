@@ -5,25 +5,21 @@ description:
 date: 2025-01-24 12:00:00 +0000
 ---
 
-I have a small collection of cacti. In New York City, it isn't warm or sunny enough to grow cacti outdoors, so I've had to grow them indoors.
+I have a small collection of cacti in my New York City apartment. It isn't warm or sunny enough here to grow cacti outdoors, so I've had to grow them indoors, which means a powerful grow light is necessary to keep the cacti happy.
 
 ![My cacti](/assets/cacti.JPEG){:.w50}
 
-When shopping for a grow light, I decided to avoid buying the first thing on Amazon or checking Reddit for recommendations. Instead, I choose to start with the plant.
+But which grow light? When shopping for one, I decided to avoid buying the first thing on Amazon or checking Reddit for recommendations. Instead, I choose to start with the plant.
 
 # What is the plant and how much sun does it need?
 
-Before we even think about buying a grow light, our first goal should be figuring out how much sun the plant needs.
+Before we even think about grow lights, our first goal should be figuring out how much sun the plant needs.
 
-I mostly own a species of cacti called [Trichocereus pachanoi](https://en.wikipedia.org/wiki/Trichocereus_macrogonus_var._pachanoi) (colloquially known as "San Pedro").
-
-To figure out how much sun the species needs, we need to find its habitat. [Some quick research](https://www.llifle.com/Encyclopedia/CACTI/Family/Cactaceae/8471/Trichocereus_pachanoi#:~:text=Trichocereus%20pachanoi&text=Origin%20and%20Habitat%3A%20Mountains%20of,3300%20metres%20above%20sea%20level.) shows that the plant is native to Ecuador, Peru, and Colombia, specifically the mountainous region.
+I mostly own a species of cacti called [Trichocereus pachanoi](https://en.wikipedia.org/wiki/Trichocereus_macrogonus_var._pachanoi) (colloquially known as "San Pedro"). To figure out how much sun the species needs, we need to find its habitat. [Some quick research](https://www.llifle.com/Encyclopedia/CACTI/Family/Cactaceae/8471/Trichocereus_pachanoi#:~:text=Trichocereus%20pachanoi&text=Origin%20and%20Habitat%3A%20Mountains%20of,3300%20metres%20above%20sea%20level.) shows that San Pedro is native to Ecuador, Peru, and Colombia, specifically the mountainous region.
 
 ![San Pedro habitat](/assets/trich-habitat.png)
 
-Now, we need to find the [daily light integral (DLI)](https://en.wikipedia.org/wiki/Daily_light_integral) of those regions. DLI measures the amount of _photosynthetically active photons_ per day, or how much plant-usable sunlight hits the ground.
-
-With another quick search on Google, we can find [the DLI values on a map](https://horti-generation.com/daily-light-integral-interactive-tool/):
+Now, we need to find the [daily light integral (DLI)](https://en.wikipedia.org/wiki/Daily_light_integral) of those regions. DLI measures the amount of _photosynthetically active photons_ per day, or how much plant-usable sunlight hits the ground. With another quick search on Google, we can find [the DLI values on a map](https://horti-generation.com/daily-light-integral-interactive-tool/):
 
 ![Colombia/Ecuador DLI values](/assets/dli-values.png){:.75}
 
@@ -33,7 +29,7 @@ However, don't forget we're looking for the _mountainous_ regions. Looking at th
 
 # Converting DLI to PPFD
 
-The nice part about DLI is that we can convert it to photosynthetic photon flux density (PPFD). PPFD is how grow light intensity is measured and is usually published on product pages.
+Why is DLI even useful in the first place? We can convert it to photosynthetic photon flux density (PPFD). PPFD is how grow light intensity is measured, and is usually published on grow light product pages.
 
 Before we calculate the PPFD, we'll need to come up with the photoperiod. You can think about it as "how long do I want my grow light on a day?", but don't forget that the shorter the photoperiod, the more intense the light will have to be. I chose 12 hours.
 
@@ -43,7 +39,7 @@ Now, let's convert the 30-38 DLI to PPFD using an [online calculator](https://ww
 
 ![38 DLI conversion](/assets/38-dli.png){:.w75}
 
-Now that we have our PPFD value range of 700-880, we can go ahead and shop for grow lights!
+Now that we have our PPFD value range of 700-880, we now know what to look for when we shop for grow lights!
 
 # Buying a grow light using PPFD
 
@@ -61,11 +57,11 @@ Looking at the PPFD values in the chart, our plants would be happy for the most 
 
 ![PPFD chart annotated](/assets/growlight-ppfd-outer.png){:.w75}
 
-We can look for another grow light with higher PPFD values, but there are tricks we can do less optimal grow lights.
+We can look for another grow light with higher PPFD values, but there are tricks we can do for less optimal grow lights.
 
 First, we can recalculate the PPFD values with a longer photoperiod, which should result in a lower PPFD requirement.
 
-We can also "increase" light output by reducing the height at which grow light is mounted. Be careful as this also reduces the effective grow area, and you may accidentally add _too_ much light due to the [inverse-square law](https://en.wikipedia.org/wiki/Inverse-square_law).
+We can also "increase" light output by mounting the grow light closer to the plant. Be careful as this also reduces the effective grow area, and you may accidentally add _too_ much light due to the [inverse-square law](https://en.wikipedia.org/wiki/Inverse-square_law).
 
 # Putting it all together
 
