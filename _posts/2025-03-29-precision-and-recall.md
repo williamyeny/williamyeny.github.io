@@ -1,4 +1,4 @@
----
+![image](https://github.com/user-attachments/assets/4d225039-fd20-4a3a-bea4-d61af5b05139)---
 layout: post
 title:  "A simple visual guide to precision and recall"
 description: 
@@ -17,7 +17,7 @@ Let's say we have a bunch of red and blue circles.
 
 ![1](/assets/pr-1.svg){:.w75}
 
-Our goal is to draw a box that contains as many red circles as possible while excluding as many blue circles as possible. Let's give it our best shot.
+Our goal is to draw a box that "identifies" all the red circles -- capturing as many red ones as we can, while excluding as many blue ones as possible. Let's give it a try.
 
 ![2](/assets/pr-2.svg){:.w75}
 
@@ -33,28 +33,34 @@ Next, let's figure out the _recall_. Our recall here is the ratio of all the red
 
 ![4](/assets/pr-4.svg){:.w75}
 
-Again, a perfect box would have 100% recall (all the red circles would be in the box). We can define recall here as "how many of the red circles are boxed as red?"
+Now we can come up with general definitions. Precision is "if something is identified as X, what are the chances it's actually X?" and recall is "of all the things that are actually X, how many did we correctly identify?"
 
-There's something important you may have noticed: precision and recall are inversely related.
+In a perfect world, we would be able to draw a box with 100% precision and 100% recall. But realistically, we have to balance the values.
 
-Let's say we want to increase our precision to 100%, or get 100% of the circles in the box to be red. We can do that by shrinking the box.
+For example, let's say we want to increase our precision to 100%, or get all of the circles in the box to be red. We can do that by shrinking the box.
 
 ![5](/assets/pr-5.svg){:.w75}
 
-Our precision is now at 100%, but at what cost? Out of the 5 red circles, only 2 of them are in the box now, meaning our precision dropped from 60% to 40%!
+Our precision is now at 100%, but at what cost? Out of the 5 red circles, only 2 of them are in the box now, meaning our recall dropped from 60% to 40%!
 
-We can try the same thing with increasing recall. We can reach 100% recall by extending the box, but our precision drops from 75% to 62.5% (there are now 8 circles in the box, with 5 of them being red).
+Similarly, we can reach 100% recall by extending the box, but our precision drops from 75% to 62.5% (there are now 8 circles in the box, with 5 of them being red).
 
 ![6](/assets/pr-6.svg){:.w75}
 
-That's it. That's precision and recall.
+This means that precision and recall are inversely related -- improving one value usually means the other has to suffer.
 
-# The computer use case
+![7](/assets/pr-7.svg){:.w75}
 
-In real-life, precision and recall is used to roast computer programs.
+So when would we apply these metrics?
+
+# Real world use
+
+Precision and recall are very useful for roasting computer programs.
 
 ![bad robot!](/assets/pr-bad-robot.png){:.w75}
 
 Since precision and recall are inversely related, we can use them to tweak retrieval algorithms or machine learning models based on the intended goal. 
 
 For example, a program like FaceID should prioritize precision -- it's fine if it _occasionally_ doesn't work on our face as long as randos would never be able to unlock our iPhone. On the other hand, a screening tool for a highly deadly disease should prioritize recall -- a few false alarms is acceptable as long as we catch every possible case.
+
+That's it! That's precision and recall.
