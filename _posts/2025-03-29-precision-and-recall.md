@@ -31,7 +31,7 @@ Next, let's figure out the _recall_. Our recall here is the ratio of all the red
 
 ![4](/assets/pr-4.svg){:.w75}
 
-Now we can come up with general definitions. Precision is "if something is identified as X, what are the chances it's actually X?" and recall is "of all the things that are actually X, how many did we correctly identify?"
+Now, let's generalize! Precision is "if something is identified as X, what are the chances it's actually X?" and recall is "of all the things that are actually X, how many did we correctly identify?"
 
 In a perfect world, we would be able to draw a box with 100% precision and 100% recall. But realistically, we have to balance the values.
 
@@ -47,7 +47,7 @@ Similarly, we can reach 100% recall by extending the box, but our precision drop
 
 This means that precision and recall are inversely related -- improving one value usually means the other has to suffer.
 
-![7](/assets/pr-7.svg){:.w75}
+![7](/assets/pr-7.svg)
 
 # Real world use
 
