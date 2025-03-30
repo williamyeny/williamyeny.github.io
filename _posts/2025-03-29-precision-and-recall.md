@@ -25,9 +25,7 @@ So how good is our box at splitting the red circles from the blue?
 
 Let's start with figuring out the _precision_. Our precision here is the ratio of circles in the box that are actually red. 3 out of 4 circles in our box is read, so our precision is 3/4 = 75%.
 
-![2](/assets/pr-3.svg){:.w75}
-
-Even though a perfect box would have 100% precision (all the circles in the box are red), 75% is probably the best we can do here. Another way of defining precision here is "if a circle is boxed as red, what are the chances it's actually red?"
+![3](/assets/pr-3.svg){:.w75}
 
 Next, let's figure out the _recall_. Our recall here is the ratio of all the red circles that we managed to get in the box. We managed to get 3 out of a total of 5 red circles in the box, so our recall is 3/5 = 60%.
 
@@ -51,7 +49,7 @@ This means that precision and recall are inversely related -- improving one valu
 
 ![7](/assets/pr-7.svg){:.w75}
 
-So when would we apply these metrics?
+So why are these metrics useful?
 
 # Real world use
 
