@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/4d225039-fd20-4a3a-bea4-d61af5b05139)---
+---
 layout: post
 title:  "A simple visual guide to precision and recall"
 description: 
