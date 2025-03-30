@@ -57,7 +57,9 @@ Precision and recall are very useful for roasting computer programs.
 
 Since precision and recall are inversely related, we can use them to tweak retrieval algorithms or machine learning models based on the intended goal. 
 
-For example, a program like FaceID should prioritize precision -- it's fine if it _occasionally_ doesn't work on our face as long as randos would never be able to unlock our iPhone. On the other hand, a screening tool for a highly deadly disease should prioritize recall -- a few false alarms is acceptable as long as we catch every possible case.
+For example, a program like FaceID should prioritize precision -- it's fine if it _occasionally_ doesn't work on our face as long as randos would never be able to unlock our iPhone. 
+
+On the other hand, a screening tool for a highly deadly disease should prioritize recall -- a few false alarms is acceptable as long as we catch every possible case.
 
 What about a non-computer scenario? If you bump into someone you know but you're bad at names, you should only say their name if you're very confident you remember what it is (high precision) and not start listing off names like a psychopath (high recall).
 
