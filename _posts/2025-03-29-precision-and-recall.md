@@ -23,7 +23,7 @@ Our goal is to draw a box that "identifies" all the red circles -- capturing as 
 
 So how good is our box at splitting the red circles from the blue?
 
-Let's start with figuring out the _precision_. Our precision here is the ratio of circles in the box that are actually red. 3 out of 4 circles in our box is read, so our precision is 3/4 = 75%.
+Let's start with figuring out the _precision_. Our precision here is the ratio of circles in the box that are actually red. 3 out of 4 circles in our box is red, so our precision is 3/4 = 75%.
 
 ![3](/assets/pr-3.svg){:.w75}
 
