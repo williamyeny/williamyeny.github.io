@@ -5,6 +5,8 @@ description:
 date:   2025-03-29 00:24:30 +0000
 ---
 
+Precision and recall are two immensely important metrics in when it comes to retrieval algorithms and machine learning models. Outside of computer science, everyone should learn about them because they just generally describe how good something or someone is at identifying stuff.
+
 Let's say we have a group of blue and red circles. 
 
 Our goal is to draw a box that contains as many red circles as possible while including the least amount of blue circles. Let's give it our best shot.
