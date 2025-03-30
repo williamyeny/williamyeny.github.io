@@ -5,23 +5,23 @@ description:
 date:   2025-03-29 00:24:30 +0000
 ---
 
-_Precision_ and _recall_ are two important metrics in computer science, but they're pretty general concepts. They just describe how good something/someone is at identifying/retrieving stuff.
+_Precision_ and _recall_ are two important metrics in computer science, but they're pretty general concepts. **They just describe how good something/someone is at identifying/retrieving stuff.**
 
-They're quite simple, yet every explanation is _awful_ for beginners or non-computer people. You should not have to memorize formulas or read confusion matrices to understand the gist.
+They're quite simple, yet every explanation is _awful_ for beginners or non-computer people. You should not have to memorize formulas or read confusion matrices to get the gist.
 
 ![what](/assets/pr-what.png){:.w50}
 
 # A simple example
 
-Let's say we have a group of blue and red circles. 
+Let's say we have a bunch of red and blue circles. 
 
 ![1](/assets/pr-1.svg){:.w75}
 
-Our goal is to draw a box that contains as many red circles as possible while including the least amount of blue circles. Let's give it our best shot.
+Our goal is to draw a box that contains as many red circles as possible while excluding as many blue circles as possible. Let's give it our best shot.
 
 ![2](/assets/pr-2.svg){:.w75}
 
-So how "good" is our box at containing red circles?
+So how good is our box at "finding" the red circles?
 
 Let's figure out the _precision_. Our precision here is the ratio of circles in the box that are actually red. Out of the 4 circles in the box, 3 are red, so our precision is 3/4 = 75%.
 
@@ -31,9 +31,9 @@ Next, let's figure out the _recall_. Our recall here is the ratio of red circles
 
 ![4](/assets/pr-4.svg){:.w75}
 
-Something notable is that precision and recall are inversely related.
+There's something important you may have noticed: precision and recall are inversely related.
 
-Let's say we want to increase our precision to 100%, or make sure 100% of the circles in the box are red. We can do that by shrinking the box to the right.
+Let's say we want to increase our precision to 100%, or get 100% of the circles in the box to be red. We can do that by shrinking the box.
 
 ![5](/assets/pr-5.svg){:.w75}
 
