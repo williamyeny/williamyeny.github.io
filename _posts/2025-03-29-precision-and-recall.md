@@ -54,7 +54,7 @@ This means that precision and recall are inversely related -- improving one valu
 
 Precision and recall are very useful for roasting computer programs.
 
-![bad robot!](/assets/pr-bad-robot.png){:.w75}
+![bad robot!](/assets/pr-bad-robot.png)
 
 Since precision and recall are inversely related, we can use them to tweak retrieval algorithms or machine learning models based on the intended goal.
 

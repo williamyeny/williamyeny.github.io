@@ -34,7 +34,7 @@ But why mutilate cacti in the first place? Sometimes, the scion can't photosynth
 
 I don't usually get to my third fact because their eyes start unfocusing. And I don't want them to forget to try the yellow dragon fruit!
 
-Sometimes, I ask if they have any yellow-dragon-fruit-like recommentations for me. I really live for "maybe you've had the wrong `X`" moments.
+Sometimes, I ask if they have any yellow-dragon-fruit-like recommentations for me. I really live for "maybe you've had the wrong X" moments.
 
 Like I thought I didn't like wearing sunglasses until I found one that fit my low nose bridge. Or I thought I hated Joe's Pizza, but it's actually heavenly when it's at the end of a night out with your fellow alcoholics.
 
