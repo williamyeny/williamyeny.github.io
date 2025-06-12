@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Detecting suboptimal receipt matching experiences using Reddit's comment ranking algorithm"
-description: 
-date:   2024-12-11 00:24:30 +0000
+title: "Detecting suboptimal receipt matching experiences"
+description:
+date: 2024-12-11 00:24:30 +0000
 ---
 
 At [Ramp](https://ramp.com/), we provide finance software for businesses, and one core feature I work on is called "receipt matching." Businesses are required by law to attach receipts to most transactions, and if a business makes many transactions, matching up all the receipts to the right transactions can get hairy! With receipt matching, a business can submit any receipt, and an algorithm will try to find the right transaction automatically.
@@ -15,11 +15,12 @@ One of our goals is to become more proactive at detecting these specific cases. 
 
 Doesn't sound too hard, right? For one customer (a `business`), we could divide the number of receipts that didn't match by the total number of receipts, and then sort. For example, a business with 4 out of 5 receipts that failed to match would take priority over a business with 2 out of 10 receipts that failed to match.
 
-Except this doesn't work when trying to find the *worst* experiences out of many businesses. For example, let's say we have 
-* Business A, who submitted 3 receipts and 2 didn't match
-* Business B, who submitted 300 receipts and 180 failed to match
+Except this doesn't work when trying to find the _worst_ experiences out of many businesses. For example, let's say we have
 
-Business A has a worse ratio than Business B, but we definitely care more about Business B. Business A could've just accidentally uploaded the wrong files once, but Business B is almost certainly experiencing a systemic issue. 
+- Business A, who submitted 3 receipts and 2 didn't match
+- Business B, who submitted 300 receipts and 180 failed to match
+
+Business A has a worse ratio than Business B, but we definitely care more about Business B. Business A could've just accidentally uploaded the wrong files once, but Business B is almost certainly experiencing a systemic issue.
 
 The problem? We don't adjust the scoring with sample size.
 
