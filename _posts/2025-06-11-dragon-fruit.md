@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Maybe you've had the wrong dragon fruit
+title: "Maybe you've had the wrong dragon fruit"
 description:
 date: 2025-06-11 00:24:30 +0000
 ---

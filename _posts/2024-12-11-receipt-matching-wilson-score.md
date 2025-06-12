@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Detecting suboptimal receipt matching experiences using Reddit's comment ranking algorithm
+title:  "Detecting suboptimal receipt matching experiences using Reddit's comment ranking algorithm"
 description: 
 date:   2024-12-11 00:24:30 +0000
 ---
