@@ -20,7 +20,6 @@ body {
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    line-height: 28px;
 }
 
 .page-main-header {
@@ -31,6 +30,7 @@ body {
 .post-content h1, .post-content h2, .post-content h3 {
     margin-top: 36px;
     margin-bottom: 28px;
+    line-height: 1.75rem;
 }
 
 .post-title,.post-content h1 {
@@ -40,6 +40,7 @@ body {
 }
 
 .post-title {
+    line-height: 1.75rem;
     margin-bottom: 8px;
 }
 
@@ -49,6 +50,7 @@ body {
 }
 
 .post-content p {
+    line-height: 1.75rem;
     margin-bottom: 28px;
 }
 
