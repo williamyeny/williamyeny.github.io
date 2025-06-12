@@ -38,7 +38,7 @@ The way this works is that the formula tries to "predict" the final ratio of upv
 
 I went ahead and implemented this in a Jupyter notebook, calculating a score (`bad_match_score`) for each business that represents how bad receipt matching is for them:
 
-![Wilson score interval implementation](/assets/wilson-implementation.png){:.w75}
+![Wilson score interval implementation](/assets/wilson-implementation.png)
 
 It worked pretty well! Notice how the businesses with some matched receipts out of thousands of submitted receipts are prioritized over businesses with 0 matched receipts out of only a few hundred.
 

@@ -6,6 +6,8 @@
 body {
     font-family: Inter, sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1;
+    background-color: #FFFEFD;
+    color: #1A1A1A;
     /* fix for Chrome */
 }
 
@@ -23,8 +25,17 @@ body {
 }
 
 .page-main-header {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 56px;
+    padding-bottom: 56px;
+}
+
+.post-meta {
+    color: #484848
+}
+
+.page-content {
+    padding-top: 36px;
+    padding-bottom: 200px;
 }
 
 .post-content h1, .post-content h2, .post-content h3 {
@@ -54,28 +65,14 @@ body {
     margin-bottom: 28px;
 }
 
-// @media screen and (min-width: 800px) {
-
-//     .post-title {
-//         font-size: 1.875rem;
-//     }
-
-//     .post-content h1 {
-//         font-size: 1.775rem;
-//     }
-
-//     .post-content h2 {
-//         font-size: 1.5rem;
-//     }
-// }
-
 .post-link {
     font-size: 1rem;
 }
 
-.post-content>p>img {
+.post-content > p > img {
     display: block;
-    margin: 42px auto;
+    margin: 64px auto;
+    border-radius: 4px;
 }
 
 img.w50 {
@@ -96,6 +93,29 @@ blockquote {
     font-size: 1rem;
 }
 
+ol, ul {
+    margin-bottom: 28px;
+}
+
+li {
+    line-height: 28px;
+}
+
+// Spacing between list items
 li + li {
-    margin-top: 8px;
+    margin-top: 16px;
+}
+
+.post-content li > p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
+    font-weight: 500;
+}
+
+// inline footnote thing
+sup {
+    line-height: 0;
 }
