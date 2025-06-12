@@ -18,7 +18,7 @@ Luckily, there's a far superior variety that most people don't even know about -
 
 ![yellow dragon fruit](/assets/yellow-dragon-fruit.jpg){:.w75}
 
-The flesh consistently has this pure sweetness, like the nectar from the honeysuckles I used to pick during elementary school recess. And the seeds! Bulbous, encased in a thin layer of jelly, and an absolute delight to crunch with the molars. Even after I'm done
+The flesh consistently has this pure sweetness, like the nectar from the honeysuckles I used to pick during elementary school recess. And the seeds! Bulbous, encased in a thin layer of jelly, and an absolute delight to crunch with the molars. I'm not finished eating the fruit until I'm scraping the inner edge of the skin like a prisoner digging an escape tunnel.
 
 When I try to convert people to yellow dragon fruit, I like to throw in a couple dragon fruit facts to frame myself as an authority figure.
 
