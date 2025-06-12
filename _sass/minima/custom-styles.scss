@@ -23,8 +23,8 @@ body {
 }
 
 .page-main-header {
-    padding-top: 36px;
-    padding-bottom: 36px;
+    padding-top: 48px;
+    padding-bottom: 48px;
 }
 
 h3 {
@@ -47,10 +47,9 @@ h3 {
     margin-bottom: 28px;
 }
 
-.post-title {
+.post-title,.post-content h1 {
     font-weight: 600;
     font-size: 1rem;
-    // letter-spacing: -.01em;
 }
 
 // @media screen and (min-width: 800px) {
