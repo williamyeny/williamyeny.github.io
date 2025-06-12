@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "A simple visual guide to precision and recall"
-description: 
-date:   2025-03-29 00:24:30 +0000
+title: "A simple visual guide to precision and recall"
+description:
+date: 2025-03-29 00:24:30 +0000
 ---
 
 _Precision_ and _recall_ are two important metrics in computer science, but they're pretty general concepts. **They just describe how good something/someone is at identifying/retrieving stuff.**
@@ -11,9 +11,9 @@ They're quite simple, yet every explanation is _awful_ for beginners or non-comp
 
 ![what](/assets/pr-what.png){:.w75}
 
-# A simple example
+# An easy example
 
-Let's say we have a bunch of red and blue circles. 
+Let's say we have a bunch of red and blue circles.
 
 ![1](/assets/pr-1.svg){:.w75}
 
@@ -55,9 +55,9 @@ Precision and recall are very useful for roasting computer programs.
 
 ![bad robot!](/assets/pr-bad-robot.png){:.w75}
 
-Since precision and recall are inversely related, we can use them to tweak retrieval algorithms or machine learning models based on the intended goal. 
+Since precision and recall are inversely related, we can use them to tweak retrieval algorithms or machine learning models based on the intended goal.
 
-For example, a program like FaceID should prioritize precision -- it's fine if it _occasionally_ doesn't work on our face as long as randos would never be able to unlock our iPhone. 
+For example, a program like FaceID should prioritize precision -- it's fine if it _occasionally_ doesn't work on our face as long as randos would never be able to unlock our iPhone.
 
 On the other hand, a screening tool for a highly deadly disease should prioritize recall -- a few false alarms is acceptable as long as we catch every possible case.
 
