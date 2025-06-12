@@ -20,6 +20,7 @@ body {
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    line-height: 28px;
 }
 
 .page-main-header {
@@ -27,9 +28,19 @@ body {
     padding-bottom: 48px;
 }
 
-h3 {
-    font-size: 0.05em;
+.post-content h1, .post-content h2, .post-content h3 {
+    margin-top: 36px;
+    margin-bottom: 28px;
+}
+
+.post-title,.post-content h1 {
     font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: normal;
+}
+
+.post-title {
+    margin-bottom: 8px;
 }
 
 .post-content h2 {
@@ -37,24 +48,8 @@ h3 {
     font-size: 1rem;
 }
 
-.post-content h1 {
-    margin-bottom: 28px;
-}
-
 .post-content p {
-    line-height: 28px;
     margin-bottom: 28px;
-}
-
-.post-title,.post-content h1 {
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 28px;
-    letter-spacing: normal;
-}
-
-.post-title {
-    margin-bottom: 0;
 }
 
 // @media screen and (min-width: 800px) {
@@ -78,7 +73,7 @@ h3 {
 
 .post-content>p>img {
     display: block;
-    margin: 36px auto;
+    margin: 42px auto;
 }
 
 img.w50 {
@@ -97,4 +92,8 @@ img.w75 {
 
 blockquote {
     font-size: 1rem;
+}
+
+li + li {
+    margin-top: 8px;
 }
