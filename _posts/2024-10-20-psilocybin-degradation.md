@@ -6,15 +6,15 @@ date: 2024-10-20 00:24:30 +0000
 author: "Will Ye"
 ---
 
-The active compound in psychedelic mushrooms, psilocybin, degrades readily over time. Obviously, this is very annoying for cultivators who wish to store their mushrooms long-term because they want to avoid major potency loss. To figure out the best method to prevent this degradation, let's see what causes psilocybin to degrade.
+The active compound in psychedelic mushrooms, psilocybin, degrades over time. Obviously, this is very annoying for cultivators who wish to store their mushrooms long-term without potency loss. To figure out the best method to prevent this degradation, we'll need to know what causes psilocybin to degrade.
 
 # Degradation mechanism
 
-When psilocybin degrades, it is initially converted to psilocin. While psilocybin is relatively stable, psilocin is _very_ unstable and decomposes extremely quickly. While psilocin is the bioactive form of psilocybin[^1], it's so unstable that it's far less present in the mushroom. The famous blue bruising of psychedelic mushrooms is a result of psilocin rapidly oxidizing into inactive blue dye.
+When psilocybin degrades, it is first converted to psilocin. Compared to psilocybin, psilocin is _very_ unstable and decomposes extremely quickly. While psilocin is the bioactive form of psilocybin[^1], it is so unstable that it's usually not present in large amounts in the mushroom. The famous blue bruising of psychedelic mushrooms is a result of psilocin rapidly oxidizing into inactive blue dye.
 
 ![Bluing mushroom (https://pmc.ncbi.nlm.nih.gov/articles/PMC7004109/)](/assets/bluing-mushroom.png){:.w50}
 
-So we definitely want to do two things,
+So we want to do two things,
 
 1. prevent psilocybin from converting to psilocin, and
 2. prevent psilocin from decomposing into useless compounds.
@@ -39,9 +39,9 @@ What about oxygen? Obviously, the airtight containers will help. But the materia
 
 ![Plastic permeability table (http://dx.doi.org/10.1007/s12393-011-9034-8)](/assets/plastic-permeability.png)
 
-Since we're looking to minimize oxygen and water vapor, this is pretty important. This is why you never want to store mushrooms in Ziploc bags, because those bags are made of LDPE, a relatively permeable material. Instead, use glass, which has negigible amount of gas permeability.
+Since we're looking to minimize oxygen and water vapor, limiting permeability is important. This is why you never want to store mushrooms in Ziploc bags, because those bags are made of LDPE, a relatively permeable material. Instead, use glass, which has negigible amount of gas permeability.
 
-Assuming you're now using glass containers and silica gel packets, the last thing to ensure is that you keep the mushrooms out of heat and light. Heat and UV are sort of universal reaction catalysts, so find a cool, dark place.
+Assuming you're now using glass containers and silica gel packets, the last thing to ensure is that you keep the mushrooms out of heat and light. Heat and UV of universal reaction catalysts, so find a cool, dark place.
 
 # But... what about the freezer?
 
