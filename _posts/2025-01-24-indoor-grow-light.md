@@ -3,6 +3,7 @@ layout: post
 title: "Finding the right grow light for indoor plants: a plant-first approach"
 description:
 date: 2025-01-24 12:00:00 +0000
+author: "Will Ye"
 ---
 
 I have a small collection of cacti in my New York City apartment. It isn't warm or sunny enough here to grow cacti outdoors, so I've had to grow them indoors, which means a powerful grow light is necessary to keep the cacti happy.

@@ -3,6 +3,7 @@ layout: post
 title: "Detecting suboptimal receipt matching experiences using Reddit's comment ranking algorithm"
 description:
 date: 2024-12-11 00:24:30 +0000
+author: "Will Ye"
 ---
 
 At [Ramp](https://ramp.com/), we provide finance software for businesses, and one core feature I work on is called "receipt matching." Businesses are required by law to attach receipts to most transactions, and if a business makes many transactions, matching up all the receipts to the right transactions can get hairy! With receipt matching, a business can submit any receipt, and an algorithm will try to find the right transaction automatically.

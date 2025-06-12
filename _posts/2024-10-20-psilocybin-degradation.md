@@ -3,6 +3,7 @@ layout: post
 title: "Minimizing potency loss when storing psychedelic mushrooms"
 description:
 date: 2024-10-20 00:24:30 +0000
+author: "Will Ye"
 ---
 
 The active compound in psychedelic mushrooms, psilocybin, degrades readily over time. Obviously, this is very annoying for cultivators who wish to store their mushrooms long-term because they want to avoid major potency loss. To figure out the best method to prevent this degradation, let's see what causes psilocybin to degrade.

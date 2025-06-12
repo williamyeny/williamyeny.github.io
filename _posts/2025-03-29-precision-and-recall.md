@@ -3,6 +3,7 @@ layout: post
 title: "A simple visual guide to precision and recall"
 description:
 date: 2025-03-29 00:24:30 +0000
+author: "Will Ye"
 ---
 
 _Precision_ and _recall_ are two important metrics in computer science, but they're pretty general concepts. **They just describe how good something/someone is at identifying/retrieving stuff.**
