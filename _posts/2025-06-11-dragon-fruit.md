@@ -12,13 +12,13 @@ The most common variety, and what the nonbeliever probably tried, has pink skin 
 
 ![white dragon fruit](/assets/white-dragon-fruit.jpg){:.w75}
 
-I don't like this variety of dragon fruit, either. The taste is mild and barely sweet, and overall mid at best.
+I don't like this variety of dragon fruit, either. The taste is very mild, and sweet in the way LaCroix is flavorful. Just... mid.
 
 Luckily, there's a far superior variety that most people don't even know about -- the yellow dragon fruit!
 
 ![yellow dragon fruit](/assets/yellow-dragon-fruit.jpg){:.w75}
 
-The flesh consistently has this pure sweetness, like the nectar from the honeysuckles I used to pick during elementary school recess. And the seeds! Bulbous, encased in a thin layer of jelly, and an absolute delight to crunch with the molars. I'm not finished eating a yellow dragon fruit until I'm scraping the inside of the skin like a prisoner digging an escape tunnel.
+The flesh consistently has this pure sweetness, like the nectar from the honeysuckles I used to pick during elementary school recess. And the seeds! Bulbous, encased in a thin layer of jelly, and an absolute delight to crunch with the molars. I'll devour it all. I'm not finished eating until I'm scraping the inside of the skin like a prisoner digging an escape tunnel.
 
 When I try to convert someone to yellow dragon fruit, I like to throw in a couple dragon fruit facts to frame myself as an authority figure.
 
@@ -26,7 +26,7 @@ The first fact I share is that the dragon fruit plant is actually a tropical cac
 
 ![dragon fruit plant](/assets/wild-dragon-fruit-plant.jpg){:.w75}
 
-My second favorite fact is that dragon fruit stems are often beheaded so that a different cactus could be surgically attached on top. The process is called grafting, where a scion (the parasite) is grafted onto a rootstock (the stem).
+My second favorite fact is that dragon fruit stems are often beheaded so that a different cactus could be surgically attached on top. This process is called grafting, where a scion (the parasite) is grafted onto a rootstock (the stem).
 
 ![grafted cacti](/assets/grafted-cacti.webp){:.w75}
 
@@ -34,9 +34,9 @@ But why mutilate cacti in the first place? Sometimes, the scion can't photosynth
 
 I don't usually get to my third fact because their eyes start unfocusing. And I don't want them to forget to try the yellow dragon fruit!
 
-Sometimes, I ask if they have any yellow-dragon-fruit-like recommentations for me. I really live for "maybe you've had the wrong X" moments.
+Sometimes, I ask if they have any yellow-dragon-fruit-like recommendations for me. I really live for those "maybe you've had the wrong X" moments.
 
-Like I thought I didn't like wearing sunglasses until I found one that fit my low nose bridge. Or I thought I hated Joe's Pizza, but it's actually heavenly when it's at the end of a night out with your fellow alcoholics.
+Like I thought I didn't like wearing sunglasses until I found one that fit my low nose bridge. And I thought I hated Joe's Pizza, but it's actually heavenly at the end of a night out with fellow alcoholics.
 
 Who knows!
 
