@@ -64,4 +64,4 @@ Looks pretty accurate! It's also quite speedy, due to the trick of downsizing th
 
 I quickly shipped this algorithm, and it now runs on the hundreds of millions of receipts Ramp processes a year.
 
-If this sounded interesting to you, [we are hiring](https://ramp.com/careers)!
+If this sounded interesting to you, [Ramp is hiring](https://ramp.com/careers)!
