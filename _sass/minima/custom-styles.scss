@@ -121,6 +121,10 @@ sup {
 }
 
 .highlight {
-    margin-bottom: 28px;
+    margin-bottom: 42px;
+    margin-top: 42px;
     border-radius: 4px;
+}
+.highlight, code {
+    background-color: rgb(245,245,245);
 }
