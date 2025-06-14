@@ -10,11 +10,11 @@ At [Ramp](https://ramp.com/), our customers upload two types of receipt images.
 
 Photos:
 
-![receipt-photo](/assets/receipt-photo.jpg)
+![receipt-photo](/assets/receipt-photo.jpg){:.w75}
 
 And screenshots:
 
-![receipt-screenshot](/assets/receipt-screenshot.png)
+![receipt-screenshot](/assets/receipt-screenshot.png){:.w75}
 
 I had to come up with an algorithm that distinguishes between the two types as a filter for heavier processing tasks.
 
