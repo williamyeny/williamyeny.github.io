@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Will Ye</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      .section {
+        text-align: center;
+        margin-top: 10vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+      .unit img {
+        display: block;
+        margin: 0 auto 16px;
+        width: 300px;
+        height: 300px;
+        border-radius: 8px;
+      }
+      .unit button {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 42px;
+        background-image: linear-gradient(180deg, #fd8407 0%, #ed5503 100%);
+      }
+      h1 {
+        font-size: 20px;
+        margin-bottom: 36px;
+      }
+      .controls {
+        margin-top: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .controls label input {
+        margin-left: 4px;
+      }
+      .controls label input[type="number"] {
+        width: 64px;
+        padding: 2px 4px;
+      }
+    </style>
+    <script src="/disintegrate/html2canvas.min.js"></script>
+    <script src="/disintegrate/simplexNoise.js"></script>
+    <script>
+      const overlayCanvas = (elem, canvas) => {
+        const parent = elem.offsetParent;
+        const offsetX = elem.offsetLeft - 100;
+        const offsetY = elem.offsetTop - 100;
+        Object.assign(canvas.style, {
+          position: "absolute",
+          top: `${offsetY}px`,
+          left: `${offsetX}px`,
+          width: `${elem.offsetWidth + 200}px`,
+          height: `${elem.offsetHeight + 200}px`,
+          pointerEvents: "none",
+        });
+        parent.appendChild(canvas);
+        elem.style.visibility = "hidden";
+      };
+
+      const disintegrate = (
+        elem,
+        useEasing = false,
+        minMoveSpeed = 0.0,
+        maxMoveSpeed = 1,
+        minFadeSpeed = 0.01,
+        maxFadeSpeed = 0.02,
+        centerVectorScale = 0.005,
+        simplexXYScale = 0.005,
+        simplexTimeScale = 0.01,
+        simplexVectorScale = 1,
+      ) => {
+        const seed = Date.now();
+        const simplex = openSimplexNoise(seed);
+
+          html2canvas(elem).then((originalCanvas) => {
+            const paddedCanvas = document.createElement("canvas");
+            paddedCanvas.width = originalCanvas.width + 200;
+            paddedCanvas.height = originalCanvas.height + 200;
+
+            const centerX = paddedCanvas.width / 2;
+            const centerY = paddedCanvas.height / 2;
+
+            const ctx = paddedCanvas.getContext("2d", {
+              willReadFrequently: true,
+            });
+            ctx.drawImage(originalCanvas, 100, 100);
+
+            overlayCanvas(elem, paddedCanvas);
+
+            const imageData = ctx.getImageData(
+              0,
+              0,
+              paddedCanvas.width,
+              paddedCanvas.height
+            );
+            const particles = [];
+
+            for (let y = 0; y < paddedCanvas.height; y++) {
+              for (let x = 0; x < paddedCanvas.width; x++) {
+                const i = (y * paddedCanvas.width + x) * 4;
+                const r = imageData.data[i];
+                const g = imageData.data[i + 1];
+                const b = imageData.data[i + 2];
+                const a = imageData.data[i + 3];
+
+                if (a !== 0) {
+                  const angle = 2 * Math.PI * Math.random();
+                  const targetSpeed =
+                    minMoveSpeed +
+                    (maxMoveSpeed - minMoveSpeed) * Math.random();
+                  const fadeStep =
+                    minFadeSpeed +
+                    (maxFadeSpeed - minFadeSpeed) * Math.random();
+                  particles.push({
+                    x: x,
+                    y: y,
+                    dirX: Math.cos(angle),
+                    dirY: Math.sin(angle),
+                    speed: 0,
+                    targetSpeed: targetSpeed,
+                    r: r,
+                    g: g,
+                    b: b,
+                    a: a,
+                    fadeStep: fadeStep,
+                    alphaScale: 1.0,
+                    xCenterDist: x - centerX,
+                    yCenterDist: y - centerY,
+                  });
+                }
+              }
+            }
+
+            const easeInOutTransition = (x, start, end, frames) => {
+              if (frames === 0) return end;
+              if (x <= 0) return start;
+              if (x >= frames) return end;
+              const t = x / frames;
+              return start + (end - start) * t * t * (3 - 2 * t);
+            };
+
+            let frame = 0;
+            const animate = () => {
+              const frameData = ctx.createImageData(
+                paddedCanvas.width,
+                paddedCanvas.height
+              );
+              for (const p of particles) {
+                let vx = p.dirX;
+                let vy = p.dirY;
+
+                const angle =
+                  2 *
+                  Math.PI *
+                  simplex.noise3D(
+                    p.x * simplexXYScale,
+                    p.y * simplexXYScale,
+                    frame * simplexTimeScale
+                  );
+                vx += Math.cos(angle) * simplexVectorScale;
+                vy += Math.sin(angle) * simplexVectorScale;
+
+                vx += p.xCenterDist * centerVectorScale;
+                vy += p.yCenterDist * centerVectorScale;
+
+                if (p.alphaScale > 0) {
+                  const ix = Math.round(p.x);
+                  const iy = Math.round(p.y);
+                  if (
+                    ix >= 0 &&
+                    ix < paddedCanvas.width &&
+                    iy >= 0 &&
+                    iy < paddedCanvas.height
+                  ) {
+                    const idx = (iy * paddedCanvas.width + ix) * 4;
+                    frameData.data[idx] = p.r;
+                    frameData.data[idx + 1] = p.g;
+                    frameData.data[idx + 2] = p.b;
+                    frameData.data[idx + 3] = p.a * p.alphaScale;
+                  }
+                }
+
+                p.speed = useEasing
+                  ? easeInOutTransition(frame, 0, p.targetSpeed, 75)
+                  : p.targetSpeed;
+                p.x += vx * p.speed;
+                p.y += vy * p.speed;
+                p.alphaScale = Math.max(0, p.alphaScale - p.fadeStep);
+              }
+
+              ctx.putImageData(frameData, 0, 0);
+              frame++;
+              if (particles.some((p) => p.alphaScale > 0)) {
+                requestAnimationFrame(animate);
+              } else {
+                setTimeout(() => {
+                  paddedCanvas.remove();
+                  elem.style.visibility = "visible";
+                }, 1000);
+              }
+            };
+
+            paddedCanvas.offsetLeft;
+            requestAnimationFrame(animate);
+          });
+      };
+    </script>
+  </head>
+
+  <body>
+    <section class="section">
+      <div id="disintegrate-target" class="unit">
+        <h1>this is bob</h1>
+        <img src="/disintegrate/yes-cat.gif" />
+        <p>he is very happy</p>
+        <button
+          onclick="
+          disintegrate(
+            document.getElementById('disintegrate-target'),
+            document.getElementById('useEasing').checked,
+            parseFloat(document.getElementById('minMoveSpeed').value),
+            parseFloat(document.getElementById('maxMoveSpeed').value),
+            parseFloat(document.getElementById('minFadeSpeed').value),
+            parseFloat(document.getElementById('maxFadeSpeed').value),
+            parseFloat(document.getElementById('centerVectorScale').value),
+            parseFloat(document.getElementById('simplexXYScale').value),
+            parseFloat(document.getElementById('simplexTimeScale').value),
+            parseFloat(document.getElementById('simplexVectorScale').value)
+          )
+        "
+        >
+          Disintegrate :(
+        </button>
+      </div>
+              <div class="controls">
+          <label
+            >Min Move Speed
+            <input id="minMoveSpeed" type="number" step="0.01" value="0.0"
+          /></label>
+          <label
+            >Max Move Speed
+            <input id="maxMoveSpeed" type="number" step="0.01" value="1.0"
+          /></label>
+          <label
+            >Min Fade Speed
+            <input id="minFadeSpeed" type="number" step="0.001" value="0.01"
+          /></label>
+          <label
+            >Max Fade Speed
+            <input id="maxFadeSpeed" type="number" step="0.001" value="0.02"
+          /></label>
+          <label
+            >Center Vector Scale
+            <input
+              id="centerVectorScale"
+              type="number"
+              step="0.001"
+              value="0.005"
+          /></label>
+          <label
+            >Simplex XY Scale
+            <input id="simplexXYScale" type="number" step="0.001" value="0.005"
+          /></label>
+          <label
+            >Simplex Time Scale
+            <input
+              id="simplexTimeScale"
+              type="number"
+              step="0.001"
+              value="0.01"
+          /></label>
+          <label
+            >Simplex Vector Scale
+            <input id="simplexVectorScale" type="number" step="0.1" value="1.0"
+          /></label>
+          <label
+            ><input id="useEasing" type="checkbox" checked /> Use Easing
+          </label>
+        </div>
+    </section>
+  </body>
+</html>
