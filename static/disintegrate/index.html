@@ -57,16 +57,18 @@
     <script src="/disintegrate/html2canvas.min.js"></script>
     <script src="/disintegrate/simplexNoise.js"></script>
     <script>
+      const CANVAS_PADDING = 100 / window.devicePixelRatio;
+
       const overlayCanvas = (elem, canvas) => {
         const parent = elem.offsetParent;
-        const offsetX = elem.offsetLeft - 100;
-        const offsetY = elem.offsetTop - 100;
+        const offsetX = elem.offsetLeft - CANVAS_PADDING;
+        const offsetY = elem.offsetTop - CANVAS_PADDING;
         Object.assign(canvas.style, {
           position: "absolute",
           top: `${offsetY}px`,
           left: `${offsetX}px`,
-          width: `${elem.offsetWidth + 200}px`,
-          height: `${elem.offsetHeight + 200}px`,
+          width: `${elem.offsetWidth + 2 * CANVAS_PADDING}px`,
+          height: `${elem.offsetHeight + 2 * CANVAS_PADDING}px`,
           pointerEvents: "none",
         });
         parent.appendChild(canvas);
@@ -88,137 +90,139 @@
         const seed = Date.now();
         const simplex = openSimplexNoise(seed);
 
-          html2canvas(elem).then((originalCanvas) => {
-            const paddedCanvas = document.createElement("canvas");
-            paddedCanvas.width = originalCanvas.width + 200;
-            paddedCanvas.height = originalCanvas.height + 200;
+        html2canvas(elem, {
+          scale: window.devicePixelRatio,
+          backgroundColor: null,
+        }).then((originalCanvas) => {
+          const paddedCanvas = document.createElement("canvas");
+          paddedCanvas.width = originalCanvas.width + 2 * CANVAS_PADDING;
+          paddedCanvas.height = originalCanvas.height + 2 * CANVAS_PADDING;
 
-            const centerX = paddedCanvas.width / 2;
-            const centerY = paddedCanvas.height / 2;
+          const centerX = paddedCanvas.width / 2;
+          const centerY = paddedCanvas.height / 2;
 
-            const ctx = paddedCanvas.getContext("2d", {
-              willReadFrequently: true,
-            });
-            ctx.drawImage(originalCanvas, 100, 100);
+          const ctx = paddedCanvas.getContext("2d", {
+            willReadFrequently: true,
+          });
+          ctx.drawImage(originalCanvas, CANVAS_PADDING, CANVAS_PADDING);
 
-            overlayCanvas(elem, paddedCanvas);
+          overlayCanvas(elem, paddedCanvas);
+          return;
 
-            const imageData = ctx.getImageData(
-              0,
-              0,
+          const imageData = ctx.getImageData(
+            0,
+            0,
+            paddedCanvas.width,
+            paddedCanvas.height
+          );
+          const particles = [];
+
+          for (let y = 0; y < paddedCanvas.height; y++) {
+            for (let x = 0; x < paddedCanvas.width; x++) {
+              const i = (y * paddedCanvas.width + x) * 4;
+              const r = imageData.data[i];
+              const g = imageData.data[i + 1];
+              const b = imageData.data[i + 2];
+              const a = imageData.data[i + 3];
+
+              if (a !== 0) {
+                const angle = 2 * Math.PI * Math.random();
+                const targetSpeed =
+                  minMoveSpeed + (maxMoveSpeed - minMoveSpeed) * Math.random();
+                const fadeStep =
+                  minFadeSpeed + (maxFadeSpeed - minFadeSpeed) * Math.random();
+                particles.push({
+                  x: x,
+                  y: y,
+                  dirX: Math.cos(angle),
+                  dirY: Math.sin(angle),
+                  speed: 0,
+                  targetSpeed: targetSpeed,
+                  r: r,
+                  g: g,
+                  b: b,
+                  a: a,
+                  fadeStep: fadeStep,
+                  alphaScale: 1.0,
+                  xCenterDist: x - centerX,
+                  yCenterDist: y - centerY,
+                });
+              }
+            }
+          }
+
+          const easeInOutTransition = (x, start, end, frames) => {
+            if (frames === 0) return end;
+            if (x <= 0) return start;
+            if (x >= frames) return end;
+            const t = x / frames;
+            return start + (end - start) * t * t * (3 - 2 * t);
+          };
+
+          let frame = 0;
+          const animate = () => {
+            const frameData = ctx.createImageData(
               paddedCanvas.width,
               paddedCanvas.height
             );
-            const particles = [];
+            for (const p of particles) {
+              let vx = p.dirX;
+              let vy = p.dirY;
 
-            for (let y = 0; y < paddedCanvas.height; y++) {
-              for (let x = 0; x < paddedCanvas.width; x++) {
-                const i = (y * paddedCanvas.width + x) * 4;
-                const r = imageData.data[i];
-                const g = imageData.data[i + 1];
-                const b = imageData.data[i + 2];
-                const a = imageData.data[i + 3];
+              const angle =
+                2 *
+                Math.PI *
+                simplex.noise3D(
+                  p.x * simplexXYScale,
+                  p.y * simplexXYScale,
+                  frame * simplexTimeScale
+                );
+              vx += Math.cos(angle) * simplexVectorScale;
+              vy += Math.sin(angle) * simplexVectorScale;
 
-                if (a !== 0) {
-                  const angle = 2 * Math.PI * Math.random();
-                  const targetSpeed =
-                    minMoveSpeed +
-                    (maxMoveSpeed - minMoveSpeed) * Math.random();
-                  const fadeStep =
-                    minFadeSpeed +
-                    (maxFadeSpeed - minFadeSpeed) * Math.random();
-                  particles.push({
-                    x: x,
-                    y: y,
-                    dirX: Math.cos(angle),
-                    dirY: Math.sin(angle),
-                    speed: 0,
-                    targetSpeed: targetSpeed,
-                    r: r,
-                    g: g,
-                    b: b,
-                    a: a,
-                    fadeStep: fadeStep,
-                    alphaScale: 1.0,
-                    xCenterDist: x - centerX,
-                    yCenterDist: y - centerY,
-                  });
+              vx += p.xCenterDist * centerVectorScale;
+              vy += p.yCenterDist * centerVectorScale;
+
+              if (p.alphaScale > 0) {
+                const ix = Math.round(p.x);
+                const iy = Math.round(p.y);
+                if (
+                  ix >= 0 &&
+                  ix < paddedCanvas.width &&
+                  iy >= 0 &&
+                  iy < paddedCanvas.height
+                ) {
+                  const idx = (iy * paddedCanvas.width + ix) * 4;
+                  frameData.data[idx] = p.r;
+                  frameData.data[idx + 1] = p.g;
+                  frameData.data[idx + 2] = p.b;
+                  frameData.data[idx + 3] = p.a * p.alphaScale;
                 }
               }
+
+              p.speed = useEasing
+                ? easeInOutTransition(frame, 0, p.targetSpeed, 75)
+                : p.targetSpeed;
+              p.x += vx * p.speed;
+              p.y += vy * p.speed;
+              p.alphaScale = Math.max(0, p.alphaScale - p.fadeStep);
             }
 
-            const easeInOutTransition = (x, start, end, frames) => {
-              if (frames === 0) return end;
-              if (x <= 0) return start;
-              if (x >= frames) return end;
-              const t = x / frames;
-              return start + (end - start) * t * t * (3 - 2 * t);
-            };
+            ctx.putImageData(frameData, 0, 0);
+            frame++;
+            if (particles.some((p) => p.alphaScale > 0)) {
+              requestAnimationFrame(animate);
+            } else {
+              setTimeout(() => {
+                paddedCanvas.remove();
+                elem.style.visibility = "visible";
+              }, 1000);
+            }
+          };
 
-            let frame = 0;
-            const animate = () => {
-              const frameData = ctx.createImageData(
-                paddedCanvas.width,
-                paddedCanvas.height
-              );
-              for (const p of particles) {
-                let vx = p.dirX;
-                let vy = p.dirY;
-
-                const angle =
-                  2 *
-                  Math.PI *
-                  simplex.noise3D(
-                    p.x * simplexXYScale,
-                    p.y * simplexXYScale,
-                    frame * simplexTimeScale
-                  );
-                vx += Math.cos(angle) * simplexVectorScale;
-                vy += Math.sin(angle) * simplexVectorScale;
-
-                vx += p.xCenterDist * centerVectorScale;
-                vy += p.yCenterDist * centerVectorScale;
-
-                if (p.alphaScale > 0) {
-                  const ix = Math.round(p.x);
-                  const iy = Math.round(p.y);
-                  if (
-                    ix >= 0 &&
-                    ix < paddedCanvas.width &&
-                    iy >= 0 &&
-                    iy < paddedCanvas.height
-                  ) {
-                    const idx = (iy * paddedCanvas.width + ix) * 4;
-                    frameData.data[idx] = p.r;
-                    frameData.data[idx + 1] = p.g;
-                    frameData.data[idx + 2] = p.b;
-                    frameData.data[idx + 3] = p.a * p.alphaScale;
-                  }
-                }
-
-                p.speed = useEasing
-                  ? easeInOutTransition(frame, 0, p.targetSpeed, 75)
-                  : p.targetSpeed;
-                p.x += vx * p.speed;
-                p.y += vy * p.speed;
-                p.alphaScale = Math.max(0, p.alphaScale - p.fadeStep);
-              }
-
-              ctx.putImageData(frameData, 0, 0);
-              frame++;
-              if (particles.some((p) => p.alphaScale > 0)) {
-                requestAnimationFrame(animate);
-              } else {
-                setTimeout(() => {
-                  paddedCanvas.remove();
-                  elem.style.visibility = "visible";
-                }, 1000);
-              }
-            };
-
-            paddedCanvas.offsetLeft;
-            requestAnimationFrame(animate);
-          });
+          paddedCanvas.offsetLeft;
+          requestAnimationFrame(animate);
+        });
       };
     </script>
   </head>
@@ -248,51 +252,47 @@
           Disintegrate :(
         </button>
       </div>
-              <div class="controls">
-          <label
-            >Min Move Speed
-            <input id="minMoveSpeed" type="number" step="0.01" value="0.0"
-          /></label>
-          <label
-            >Max Move Speed
-            <input id="maxMoveSpeed" type="number" step="0.01" value="1.0"
-          /></label>
-          <label
-            >Min Fade Speed
-            <input id="minFadeSpeed" type="number" step="0.001" value="0.01"
-          /></label>
-          <label
-            >Max Fade Speed
-            <input id="maxFadeSpeed" type="number" step="0.001" value="0.02"
-          /></label>
-          <label
-            >Center Vector Scale
-            <input
-              id="centerVectorScale"
-              type="number"
-              step="0.001"
-              value="0.005"
-          /></label>
-          <label
-            >Simplex XY Scale
-            <input id="simplexXYScale" type="number" step="0.001" value="0.005"
-          /></label>
-          <label
-            >Simplex Time Scale
-            <input
-              id="simplexTimeScale"
-              type="number"
-              step="0.001"
-              value="0.01"
-          /></label>
-          <label
-            >Simplex Vector Scale
-            <input id="simplexVectorScale" type="number" step="0.1" value="1.0"
-          /></label>
-          <label
-            ><input id="useEasing" type="checkbox" checked /> Use Easing
-          </label>
-        </div>
+      <div class="controls">
+        <label
+          >Min Move Speed
+          <input id="minMoveSpeed" type="number" step="0.01" value="0.0"
+        /></label>
+        <label
+          >Max Move Speed
+          <input id="maxMoveSpeed" type="number" step="0.01" value="1.0"
+        /></label>
+        <label
+          >Min Fade Speed
+          <input id="minFadeSpeed" type="number" step="0.001" value="0.01"
+        /></label>
+        <label
+          >Max Fade Speed
+          <input id="maxFadeSpeed" type="number" step="0.001" value="0.02"
+        /></label>
+        <label
+          >Center Vector Scale
+          <input
+            id="centerVectorScale"
+            type="number"
+            step="0.001"
+            value="0.005"
+        /></label>
+        <label
+          >Simplex XY Scale
+          <input id="simplexXYScale" type="number" step="0.001" value="0.005"
+        /></label>
+        <label
+          >Simplex Time Scale
+          <input id="simplexTimeScale" type="number" step="0.001" value="0.01"
+        /></label>
+        <label
+          >Simplex Vector Scale
+          <input id="simplexVectorScale" type="number" step="0.1" value="1.0"
+        /></label>
+        <label
+          ><input id="useEasing" type="checkbox" checked /> Use Easing
+        </label>
+      </div>
     </section>
   </body>
 </html>
