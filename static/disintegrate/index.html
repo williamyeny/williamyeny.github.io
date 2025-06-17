@@ -24,7 +24,7 @@
         height: 300px;
         border-radius: 8px;
       }
-      .unit button {
+      button {
         display: block;
         margin: 0 auto;
         padding: 10px 20px;
@@ -45,7 +45,6 @@
         display: flex;
         flex-direction: column;
         gap: 8px;
-        margin-bottom: 72px;
       }
       .controls label input {
         margin-left: 4px;
@@ -58,7 +57,7 @@
     <script src="/disintegrate/html2canvas.min.js"></script>
     <script src="/disintegrate/simplexNoise.js"></script>
     <script>
-      const CANVAS_PADDING = 100 / window.devicePixelRatio;
+      const CANVAS_PADDING = 100;
 
       const overlayCanvas = (elem, canvas) => {
         const parent = elem.offsetParent;
@@ -86,14 +85,14 @@
         centerVectorScale = 0.005,
         simplexXYScale = 0.005,
         simplexTimeScale = 0.01,
-        simplexVectorScale = 1,
+        simplexVectorScale = 1
       ) => {
         const seed = Date.now();
         const simplex = openSimplexNoise(seed);
 
         html2canvas(elem, {
-          scale: window.devicePixelRatio,
           backgroundColor: null,
+          scale: 1,
         }).then((originalCanvas) => {
           const paddedCanvas = document.createElement("canvas");
           paddedCanvas.width = originalCanvas.width + 2 * CANVAS_PADDING;
@@ -108,7 +107,6 @@
           ctx.drawImage(originalCanvas, CANVAS_PADDING, CANVAS_PADDING);
 
           overlayCanvas(elem, paddedCanvas);
-          return;
 
           const imageData = ctx.getImageData(
             0,
