@@ -1,3 +1,4 @@
 public/*
 !public/fonts
 !public/fonts/**
+.DS_Store
