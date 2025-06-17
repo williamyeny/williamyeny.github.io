@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "Inter";
+    font-family: InterVariable;
     src: url("/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
 }
 
@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: Inter, sans-serif;
+    font-family: InterVariable, sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1;
     color: rgb(26, 26, 26);
     background-color: rgb(255, 254, 253);
