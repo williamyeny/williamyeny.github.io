@@ -3,19 +3,19 @@ title = "Maybe you've had the wrong dragon fruit"
 date = 2025-06-11
 +++
 
-Whenever I ask someone how they feel about dragon fruit, they usually say they don't like it. But maybe they've had the wrong dragon fruit.
+Whenever I ask someone how they feel about dragon fruit, they usually say they don't like them. But maybe they've had the wrong dragon fruit.
 
-The most common variety, and what the nonbeliever probably tried, has pink skin and white flesh.
+The nonbeliever probably tried the most common variety, which has pink skin and white flesh.
 
 {{ image(src="white-dragon-fruit.jpg") }}
 
-I don't like this variety of dragon fruit, either. The taste is very mild, and sweet in the way LaCroix is flavorful. Just... mid.
+I don't like this variety of dragon fruit, either. It has a mild and disappointing taste, like a can of LaCroix.
 
 Luckily, there's a far superior variety that most people don't even know about -- the yellow dragon fruit!
 
 {{ image(src="yellow-dragon-fruit.jpg") }}
 
-The flesh consistently has this pure sweetness, like the nectar from the honeysuckles I used to pick during elementary school recess. And the seeds! Bulbous, encased in a thin layer of jelly, and an absolute delight to crunch with the molars. I'll devour it all. I'm not finished eating until I'm scraping the inside of the skin like a prisoner digging an escape tunnel.
+The flesh consistently has this pure sweetness, like the nectar from the honeysuckles I used to pick during elementary school recess. And the seeds! Bulbous, encased in a thin layer of jelly, and an absolute delight to crunch with the molars. Every spoonful of the yellow dragon fruit is a blessing. I'm not finished eating one until I'm scraping the inside of the skin like a prisoner digging an escape tunnel.
 
 When I try to convert someone to yellow dragon fruit, I like to throw in a couple dragon fruit facts to frame myself as an authority figure.
 
@@ -23,7 +23,7 @@ The first fact I share is that the dragon fruit plant is actually a tropical cac
 
 {{ image(src="wild-dragon-fruit-plant.jpg") }}
 
-My second favorite fact is that dragon fruit stems are often beheaded so that a different cactus could be surgically attached on top. This process is called grafting, where a scion (the parasite) is grafted onto a rootstock (the stem).
+The second fact I tell them is that dragon fruit stems are often beheaded so that a different cactus could be surgically attached on top. This process is called grafting, where a scion (the parasite) is grafted onto a rootstock (the stem).
 
 {{ image(src="grafted-cacti.webp") }}
 
