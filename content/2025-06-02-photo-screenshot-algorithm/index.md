@@ -13,11 +13,11 @@ And screenshots:
 
 {{ image(src="receipt-screenshot.png") }}
 
-I was bestowed with the privilege of coming up with an algorithm that distinguishes between the two types.
+I had the privilege of coming up with an algorithm that classifies an image as one of these two types.
 
-However, I had one major limitation. I could not use any libraries other than [Pillow](https://pypi.org/project/pillow/). No OpenCV or Tesseract or classification models, just straight rawdogging it.
+However, there was one major limitation. I could not use any libraries other than [Pillow](https://pypi.org/project/pillow/). No OpenCV or Tesseract or classification models, just straight rawdogging it.
 
-After a bit of tinkering, I came up with a solution that uses color [entropy](<https://en.wikipedia.org/wiki/Entropy_(information_theory)>):
+After a few failed approaches[^1], I came up with a solution that uses color [entropy](<https://en.wikipedia.org/wiki/Entropy_(information_theory)>):
 
 ```python
 import math
@@ -62,3 +62,5 @@ Looks pretty accurate! It's also quite speedy, due to the trick of downsizing th
 I quickly shipped this algorithm, and it now runs on the hundreds of millions of receipts Ramp processes a year.
 
 If this sounded interesting to you, [Ramp is hiring](https://ramp.com/careers)!
+
+[^1]: The first approach, originally written by my friend [Yunyu](https://x.com/yunyu_l), measured the percentage of the most common color -- most screenshots are set against a background with a single flat color. However, it struggled with screenshots that had compression artifacts, even after quantizing the colors. I also could not find a reasonable threshold because many screenshots do have two or more background colors. 
