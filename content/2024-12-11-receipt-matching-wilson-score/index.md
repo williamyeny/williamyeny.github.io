@@ -5,7 +5,7 @@ date = 2024-12-11
 
 At [Ramp](https://ramp.com/), which makes finance software for businesses, I work on a core feature called "receipt matching." Businesses are required by law to attach receipts to most transactions, and since businesses make many transactions, matching up all the receipts to the right transactions can be incredibly time-consuming! With the receipt matching feature, a business can submit any receipt and an algorithm will find the right transaction automatically.
 
-While the receipt matching system works great most of the time, occasionally a customer will experience consistent failed matches. This is usually due to a configuration issue for the specific customer, which requires manual intervention rather than broad changes to the receipt matching system.
+While the receipt matching system works flawlessly for most, some customers may experience persistent matching failures. This is usually due to a configuration issue for the specific customer, which requires manual intervention rather than broad changes to the receipt matching system.
 
 Our goal is to become more proactive at detecting these specific cases. For example, if a customer submits 100 receipts but only 10 of them match, we should be alerted instead of waiting for a complaint. So, when exactly should we be alerted?
 
