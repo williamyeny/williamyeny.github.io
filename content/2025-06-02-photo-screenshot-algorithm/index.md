@@ -13,7 +13,7 @@ And screenshots:
 
 {{ image(src="receipt-screenshot.png") }}
 
-I was bestowed with the privilege of writing an algorithm that distinguishes between these two types.
+I was bestowed with the privilege of writing an algorithm that distinguishes between them.
 
 However, there was one major limitation. I could not use any libraries other than [Pillow](https://pypi.org/project/pillow/). No OpenCV or Tesseract or classification models, just straight rawdogging it.
 
