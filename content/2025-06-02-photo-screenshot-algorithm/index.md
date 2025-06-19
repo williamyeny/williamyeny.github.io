@@ -13,7 +13,7 @@ And screenshots:
 
 {{ image(src="receipt-screenshot.png") }}
 
-I had the privilege of coming up with an algorithm that classifies an image as one of these two types.
+I was bestowed with the privilege of writing an algorithm that distinguishes between these two types.
 
 However, there was one major limitation. I could not use any libraries other than [Pillow](https://pypi.org/project/pillow/). No OpenCV or Tesseract or classification models, just straight rawdogging it.
 
@@ -51,16 +51,18 @@ def is_image_photo_or_screenshot(
         return "screenshot"
 ```
 
-The intuition behind this algorithm is simple. A photo has a large amount of unique colors. Even the blank area of a receipt in a photo will have dozens of slightly different whites. The opposite is true of a screenshot -- most of the pixels neatly belong to a handful of colors. This algorithm just measures the distribution of colors.
+The intuition behind this algorithm is simple. A photo has a large amount of unique colors. Even the blank area of a physical receipt in a photo will have dozens of slightly different whites. The opposite is true of a screenshot -- most of the pixels neatly belong to a handful of colors. This algorithm just measures the distribution of colors.
 
 I ran a test on a small dataset of receipts I prepared:
 
 {{ image(src="photo-screenshot-distribution.png", full_width=true) }}
 
-Looks pretty accurate! It's also quite speedy, due to the trick of downsizing the image to 100x100 pixels.
+Looks accurate! It's also quite speedy, due to the trick of downsizing the image to 100x100 pixels.[^2]
 
 I quickly shipped this algorithm, and it now runs on the hundreds of millions of receipts Ramp processes a year.
 
 If this sounded interesting to you, [Ramp is hiring](https://ramp.com/careers)!
 
 [^1]: The first approach, originally written by my friend [Yunyu](https://x.com/yunyu_l), measured the percentage of the most common color -- most screenshots are set against a background with a single flat color. However, it struggled with screenshots that had compression artifacts, even after quantizing the colors. I also could not find a reasonable threshold because many screenshots do have two or more background colors. 
+
+[^2]: I was concerned that aggressively downsizing the image would result in too much information loss. Initially, it did ruin the accuracy, but that was because `img.thumbnail`'s default resample method is "bicubic," or `Image.Resampling.BICUBIC`. This meant PIL would generate new colors when downsizing the image, which threw off the algorithm. Changing it to "nearest neighbor", or `Image.Resampling.NEAREST`, restored the accuracy.
