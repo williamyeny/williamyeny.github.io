@@ -3,11 +3,11 @@ title = "Detecting suboptimal receipt matching experiences using Reddit's commen
 date = 2024-12-11
 +++
 
-At [Ramp](https://ramp.com/), we provide finance software for businesses, and one core feature I work on is called "receipt matching." Businesses are required by law to attach receipts to most transactions, and if a business makes many transactions, matching up all the receipts to the right transactions can get hairy! With receipt matching, a business can submit any receipt, and an algorithm will try to find the right transaction automatically.
+At [Ramp](https://ramp.com/), which makes finance software for businesses, I work on a core feature called "receipt matching." Businesses are required by law to attach receipts to most transactions, and since businesses make many transactions, matching up all the receipts to the right transactions can be incredibly time-consuming! With the receipt matching feature, a business can submit any receipt and an algorithm will find the right transaction automatically.
 
-The receipt matching system works great most of the time, but occasionally, a customer's receipts will consistently fail to match. More often than not, this is due to a configuration issue for the specific customer, which will require manual intervention instead of broad changes to the receipt matching system.
+While the receipt matching system works great most of the time, occasionally a customer will experience consistent failed matches. This is usually due to a configuration issue for the specific customer, which requires manual intervention rather than broad changes to the receipt matching system.
 
-One of our goals is to become more proactive at detecting these specific cases. For example, if a customer submits 100 receipts but only 10 of them match, we should be alerted instead of waiting for a complaint. So, how do we find out if someone is having a bad time with receipt matching?
+Our goal is to become more proactive at detecting these specific cases. For example, if a customer submits 100 receipts but only 10 of them match, we should be alerted instead of waiting for a complaint. So, when exactly should we be alerted?
 
 ## A naive approach
 
@@ -26,7 +26,7 @@ The problem? We don't adjust the scoring with sample size.
 
 I stumbled upon [a blog post on how Reddit reworked their comment ranking algorithm](https://medium.com/hacking-and-gonzo/how-reddit-ranking-algorithms-work-ef111e33d0d9), and the problem they're solving seems very similar. They wanted to prevent the situation where a comment with 2 upvotes and 0 downvotes would outrank a comment with 100 upvotes and 2 downvotes (oversimplified from [the full explanation](https://archive.md/Q3oC8)).
 
-The algorithm that they decided on was the Wilson score interval, invented in 1927. Here's the math (don't worry if you don't understand it, I certainly don't):
+The algorithm that they decided on was the Wilson score interval, invented in 1927. For the curious, here's the math:
 
 {{ image(src="wilson-score-interval.png", full_width=true) }}
 
@@ -44,4 +44,4 @@ Side note: don't be alarmed by the high "match not found" rates, I was too lazy 
 
 ## What's next?
 
-A modified version of this algorithm will be built into an automated system I've started designing. In all honesty, I haven't prioritized building out this system because there's other projects to tackle that are more impactful and exciting. If you'd like to work on such projects with me, [Ramp is hiring](https://ramp.com/careers)!
+A modified version of this algorithm will be built into an automated system I've started designing. If you'd like to work on such projects with me, [Ramp is hiring](https://ramp.com/careers)!
