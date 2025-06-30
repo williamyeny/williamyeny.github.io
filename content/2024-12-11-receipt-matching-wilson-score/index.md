@@ -1,5 +1,5 @@
 +++
-title = "Detecting suboptimal receipt matching experiences using Reddit's comment ranking algorithm"
+title = "Detecting bad experiences using Reddit's comment ranking algorithm"
 date = 2024-12-11
 +++
 
