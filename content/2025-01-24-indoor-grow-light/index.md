@@ -1,9 +1,9 @@
 +++
-title = "Finding the right grow light for indoor plants: a plant-first approach"
+title = "How to actually find a grow light for your indoor plants"
 date = 2025-01-24
 +++
 
-I have a small collection of cacti in my New York City apartment. It isn't warm or sunny enough here to grow cacti outdoors, so I've had to grow them indoors, which means a powerful grow light is necessary to keep the cacti happy.
+I have a small collection of cacti in my New York City apartment. It isn't warm or sunny enough here to grow cacti outdoors, so I've had to grow them indoors, which means a grow light is necessary to keep the cacti happy.
 
 {{ image(src="cacti.JPEG") }}
 
