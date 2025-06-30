@@ -1,5 +1,5 @@
 +++
-title = "A lightweight algorithm to determine if an image is a photo or a screenshot"
+title = "Photo or screenshot?"
 date = 2025-06-02
 +++
 
@@ -59,7 +59,7 @@ I ran a test on a small dataset of receipts I prepared:
 
 Looking good! We only missed 6 screenshots[^2] out of almost 3000 images, a 99.8% overall accuracy. It's also quite speedy, due to the trick of downsizing the image to 100x100 pixels[^3].
 
-I quickly shipped this algorithm, and it now runs on the hundreds of millions of receipts Ramp processes a year.
+This lightweight algorithm now runs on the hundreds of millions of receipts Ramp processes a year.
 
 If this sounded interesting to you, [Ramp is hiring](https://ramp.com/careers)!
 
