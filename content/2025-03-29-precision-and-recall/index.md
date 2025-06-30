@@ -1,5 +1,5 @@
 +++
-title = "A simple visual guide to precision and recall"
+title = "A simple guide to precision and recall"
 date = 2025-03-29
 +++
 
