@@ -1,9 +1,9 @@
 +++
-title = "Minimizing potency loss when storing psychedelic mushrooms"
+title = "Storing psychedelic mushrooms with minimal potency loss"
 date = 2024-10-20
 +++
 
-The active compound in psychedelic mushrooms, psilocybin, degrades over time. Obviously, this is very annoying for cultivators who wish to store their mushrooms long-term without potency loss. To figure out the best method to prevent this degradation, we'll need to know what causes psilocybin to degrade.
+The active compound in psychedelic mushrooms, psilocybin, degrades over time. Obviously, this is very annoying for anyone wishing to store their mushrooms long-term without potency loss. To figure out the best method to prevent this degradation, we'll need to know what causes psilocybin to degrade.
 
 # Degradation mechanism
 
@@ -50,7 +50,7 @@ In the paper, there's one conclusion that intuitively does not make sense: psilo
 
 In theory, this shouldn't be true. The lower the temperature, the lower the rate of reactions -- this is universally true, it's why food in the refrigerator lasts longer, and food in the freezer lasts almost indefinitely. So what went wrong?
 
-It could be incomplete drying. When cells still have water in them, they burst when frozen due to the expansion of ice crystals, which exposes more of the psilocybin to oxygen and water. (It's also why long-term preservation of live fungi use cryoprotectants like glycerol). Incomplete drying is actually a very easy mistake to make, especially when drying large samples. The common advice for drying, "until you can snap it like a cracker", is subjective, and even using a scale to make ensure no further weight change is... inexact.
+It could be incomplete drying. When cells still have water in them, they burst when frozen due to the expansion of ice crystals, which exposes more of the psilocybin to oxygen and water. (It's also why long-term preservation of live fungi use cryoprotectants like glycerol). Incomplete drying is actually a very easy mistake to make, especially when drying large mushrooms. The common advice for drying, "until you can snap it like a cracker", is subjective, and even using a scale to make ensure no further weight change is... inexact.
 
 But my main issue with the "don't freeze" conclusion is that they used _powdered_ samples. You should **never** grind up dried mushrooms if you intend to store them because the physical abrasion and increased surface area will lead to extremely fast degradation. That being said, they had no choice. In order to do a controlled experiment, they needed to make sure the samples were homogenous, and since psilocybin distribution within a mushroom varies wildly, they were forced to grind them up. Unfortunately, this also means that their experiment doesn't accurately replicate how people would properly store their mushrooms.
 
