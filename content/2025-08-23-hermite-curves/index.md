@@ -23,9 +23,9 @@ It can't be a quadratic function, or \\(y = ax^2 + bx + c\\). It can only open o
 
 Therefore, it has to be a cubic function, or \\(y = ax^3 + bx^2 + cx + d\\)!
 
-Notice how \\(a\\), \\(b\\), \\(c\\), and \\(d\\) gives us 4 degrees of freedom. This makes sense since we have 4 parameters: start point, end point, slope at start point, and slope at end point. We'll call these parameters \\(S\\), \\(E\\), \\(S'\\), and \\(E'\\). They don't map one-to-one with each other, but we can find the relationships.
+Notice how \\(a\\), \\(b\\), \\(c\\), and \\(d\\) gives us 4 degrees of freedom. This makes sense since we have 4 parameters: start point, end point, slope at start point, and slope at end point. We'll call these parameters \\(S\\), \\(E\\), \\(S'\\), and \\(E'\\).
 
-So let's do that! Let's find \\(a\\), \\(b\\), \\(c\\), and \\(d\\) in terms of \\(S\\), \\(E\\), \\(S'\\), and \\(E'\\).
+Let's find \\(a\\), \\(b\\), \\(c\\), and \\(d\\) in terms of \\(S\\), \\(E\\), \\(S'\\), and \\(E'\\)!
 
 But first, let's make our lives easier by squishing (or expanding) \\(x\\) into a range between 0 and 1. We'll call the new variable \\(t\\) and call the function \\(H(t)\\).
 
