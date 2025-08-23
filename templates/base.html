@@ -35,6 +35,13 @@
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
         {% endif %}
     {% endblock css %}
+
+    {% if page.title %}
+    <meta name="title" content="{{ page.title }}">
+    {% endif %}
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    {% endif %}
   </head>
 
   <body>

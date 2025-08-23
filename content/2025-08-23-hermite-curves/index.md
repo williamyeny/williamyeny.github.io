@@ -5,11 +5,11 @@ date = 2025-08-23
 
 At some point, it became very useful to draw curves on the computer -- CAD, animation, video games, and more.
 
-{{ image(src="frog-curve.png") }}
+{{ image(src="frog-curve.png", full_width=true) }}
 
 A simple curve can be defined just by the start point, end point, and the slopes of the curve at the two points. This is called a Hermite curve!
 
-{{ image(src="hermite-curve.png") }}
+{{ image(src="hermite-curve.png", full_width=true) }}
 
 Let's say we want to actually implement the Hermite curve on a computer. How would we do that?
 
@@ -29,7 +29,7 @@ Let's find \\(a\\), \\(b\\), \\(c\\), and \\(d\\) in terms of \\(S\\), \\(E\\), 
 
 But first, let's make our lives easier by squishing (or expanding) \\(x\\) into a range between 0 and 1. We'll call the new variable \\(t\\) and call the function \\(H(t)\\).
 
-{{ image(src="squished.png") }}
+{{ image(src="squished.png", full_width=true) }}
 
 {% katex(block=true) %}
 \begin{aligned}
