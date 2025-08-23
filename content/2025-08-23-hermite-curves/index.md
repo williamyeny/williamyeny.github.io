@@ -57,7 +57,7 @@ E_y &= H(1) \\
 \end{aligned}
 {% end %}
 
-Now, how do we find the slopes \\(S'\\) and \\(E'\\)? Simple -- first find the derivative of \\(H(t)\\)!
+Easy so far, but what about the slopes \\(S'\\) and \\(E'\\)? Simple -- find the derivative of \\(H(t)\\)!
 
 {% katex(block=true) %}
 \begin{aligned}
@@ -66,7 +66,7 @@ H'(t) &= 3at^2 + 2bt + c
 \end{aligned}
 {% end %}
 
-Now, we can do the same thing as we did with the points, plugging in 0 and 1 to find the start and end slopes.
+Now we can do the same thing as we did with the points, plugging in 0 and 1 to find the start and end slopes.
 
 {% katex(block=true) %}
 \begin{aligned}
@@ -123,7 +123,7 @@ b &= E_y - a - S' - S_y \\
 \end{aligned}
 {% end %}
 
-Finally, we can now construct the final equation:
+Finally, we can construct the final equation:
 
 {% katex(block=true) %}
 \begin{aligned}
@@ -135,7 +135,7 @@ H(t) &= at^3 + bt^2 + ct + d \\
 \end{aligned}
 {% end %}
 
-That's it! Now, we can input an X coordinate and find the Y coordinate of the curve, given \\(S\\), \\(E\\), \\(S'\\), and \\(E'\\).
+That's it! Using this formula and \\(S\\), \\(E\\), \\(S'\\), and \\(E'\\), we can input an X coordinate and find the Y coordinate of the curve.
 
 (Note that we'll have to convert the X coordinate to \\(t\\), our squished variable:)
 
@@ -167,8 +167,8 @@ H(t)
 \end{aligned}
 {% end %}
 
-If you look up the Hermite curve elsewhere, it would probably be in this format. The four "coefficients", \\(2t^3 - 3t^2 + 1\\), \\(t^3 - 2t^2 + t\\), \\(-2t^3 + 3t^2\\), and \\(t^3 - t^2\\), are known as the Hermite basis functions.
+If you look up the Hermite curve elsewhere, it'll probably be in this format. The four "coefficients", \\(2t^3 - 3t^2 + 1\\), \\(t^3 - 2t^2 + t\\), \\(-2t^3 + 3t^2\\), and \\(t^3 - t^2\\), are known as the Hermite basis functions.
 
 Now, you might be wondering, "b-b-b-ut what about Bézier curves?"
 
-They're actually closely related. In fact, it's pretty simple to convert a Hermite curve into a cubic Bézier curve. Just take the slopes and extend them to control points, and presto!
+They're actually closely related. In fact, it's pretty simple to convert a Hermite curve into a cubic Bézier curve. Just take the slopes and extend them to control points, and presto! The formula of a cubic Bézier curve is left as an exercise to the reader :)
