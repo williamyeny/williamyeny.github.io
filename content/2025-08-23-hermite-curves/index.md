@@ -17,11 +17,20 @@ We'd need to define some sort of function that takes in the points and slopes as
 
 But what _kind_ of function?
 
-It can't be a linear function, or \\(y = ax + b\\). There's no curve!
+It can't be a linear function. There's no curve!
 
-It can't be a quadratic function, or \\(y = ax^2 + bx + c\\). It can only open one way.
+{{ image(src="linear.png", no_margin_bottom=true) }}
+$$y = ax + b$$
 
-Therefore, it has to be a cubic function, or \\(y = ax^3 + bx^2 + cx + d\\)!
+It can't be a quadratic function. Quadratic curves can only "open" one way.
+
+{{ image(src="quadratic.png", no_margin_bottom=true) }}
+$$y = ax^2 + bx + c$$
+
+But a cubic function looks promising!
+
+{{ image(src="cubic.png", no_margin_bottom=true) }}
+$$y = ax^3 + bx^2 + cx + d$$
 
 Notice how \\(a\\), \\(b\\), \\(c\\), and \\(d\\) gives us 4 degrees of freedom. This makes sense since we have 4 parameters: start point, end point, slope at start point, and slope at end point. We'll call these parameters \\(S\\), \\(E\\), \\(S'\\), and \\(E'\\).
 
