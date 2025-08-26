@@ -181,3 +181,5 @@ If you look up the Hermite curve elsewhere, it'll probably be in this format. Th
 Now, you might be wondering, "b-b-b-ut what about Bézier curves?"
 
 They're actually closely related. In fact, it's pretty simple to convert a Hermite curve into a cubic Bézier curve. Just take the slopes and extend them to control points, and presto! The formula for the cubic Bézier curve is left as an exercise to the reader :)
+
+<script src="/hermite.js"></script>
