@@ -71,7 +71,7 @@ setTimeout(() => {
     return { x: vx * s, y: vy * s };
   };
 
-  const hermite = (t, p0, p1, t0, t1) => {
+  const hermite = (t, p0_y, p1_y, t0_y, t1_y) => {
     const t2 = t * t,
       t3 = t2 * t;
     const h00 = 2 * t3 - 3 * t2 + 1;
@@ -79,8 +79,7 @@ setTimeout(() => {
     const h01 = -2 * t3 + 3 * t2;
     const h11 = t3 - t2;
     return {
-      x: h00 * p0.x + h10 * t0.x + h01 * p1.x + h11 * t1.x,
-      y: h00 * p0.y + h10 * t0.y + h01 * p1.y + h11 * t1.y,
+      y: h00 * p0_y + h10 * t0_y + h01 * p1_y + h11 * t1_y,
     };
   };
 
@@ -103,15 +102,17 @@ setTimeout(() => {
     const tStart = slopeToTangent(-10, L);
     const tEnd = slopeToTangent(-2, L);
 
-    spans.forEach((span, i) => {
+    spans.forEach((span) => {
       if (span.closest(".katex") || span.querySelector(".katex")) return;
-      const t = spans.length > 1 ? i / (spans.length - 1) : 0;
-      const p = hermite(t, a, b, tStart, tEnd);
-      const dx = p.x - span.offsetLeft;
+
+      const spanX = span.offsetLeft + span.offsetWidth / 2;
+      const t = (spanX - a.x) / (b.x - a.x);
+      const p = hermite(t, a.y, b.y, tStart.y, tEnd.y);
+
       const dy = p.y - span.offsetTop;
       span.style.display = "inline-block";
-      span.style.transition = "transform 0.3s ease-out";
-      span.style.transform = `translate(${dx}px, ${dy}px)`;
+      span.style.transition = "transform 0.5s ease-in-out";
+      span.style.transform = `translate(0px, ${dy}px)`;
     });
   };
 
@@ -134,4 +135,4 @@ setTimeout(() => {
   };
 
   window.addEventListener("scroll", onScroll);
-}, 2000);
+}, 1000);
