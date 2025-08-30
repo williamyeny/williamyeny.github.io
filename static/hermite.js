@@ -4,8 +4,8 @@ setTimeout(() => {
 
   const markerHost = document.createElement("div");
   markerHost.style.height = "100px";
-  markerHost.style.paddingTop = "200px";
-  markerHost.style.paddingBottom = "400px";
+  markerHost.style.paddingTop = "20vh";
+  markerHost.style.paddingBottom = "30vh";
   root.appendChild(markerHost);
 
   const makeDot = (x, y) => {
