@@ -11,7 +11,7 @@ $$
 
 While I won't break down every part of this definition (there are [better resources](youtube.com/watch?v=eMlx5fFNoYc) for that), we'll quickly refresh what \\(Q\\) and \\(K\\) are -- matrices whose rows are query and key vectors. Each entry of \\(QK^{\top}\\) is the dot product between one query vector and one key vector.
 
-But here's the interesting part: why are we dividing by \\(\sqrt{d_k}\\)?
+But here's the interesting part: why are we dividing by the square root of the dimension, \\(\sqrt{d_k}\\)?
 
 The original paper, [Attention Is All You Need](https://arxiv.org/pdf/1706.03762), explains it[^1] like so:
 
