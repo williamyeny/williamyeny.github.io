@@ -13,7 +13,7 @@ While I won't break down every part of this definition (there are [better resour
 
 But here's the interesting part: why are we dividing by \\(\sqrt{d_k}\\)?
 
-The original paper, [Attention Is All You Need](https://arxiv.org/pdf/1706.03762), explains it like so[^1]:
+The original paper, [Attention Is All You Need](https://arxiv.org/pdf/1706.03762), explains it[^1] like so:
 
 > While for small values of \\(d_k\\) the two mechanisms perform similarly, additive attention outperforms
 > dot product attention without scaling for larger values of \\(d_k\\). We suspect that for large values of
@@ -26,7 +26,7 @@ That's fine and all, but why \\(\sqrt{d_k}\\) in particular? Why not just \\(d_k
 
 We can figure this out using a bit of math!
 
-To make our lives easier, let's take a single query-key pair in \\(QK^{\top}\\) and call their vectors \\(q\\) and \\(k\\). We'll standardize their components to have a mean of 0 and a variance of 1[^2]:
+To make our lives easier, let's take a single query-key pair in \\(QK^{\top}\\) and call their vectors \\(q\\) and \\(k\\). We'll standardize their components[^2] to have a mean of 0 and a variance of 1:
 
 {% katex(block=true) %}
 \begin{aligned}
@@ -50,7 +50,7 @@ The dot product between \\(q\\) and \\(k\\) is just the sum of the elements from
 \end{aligned}
 {% end %}
 
-Note that \\(d_q = d_k\\) (you can only dot product vectors of equal dimensions), so we could also say  \\(\mathrm{Var}(qk^{\top}) = \mathrm{Var}\left(\sum_{i=1}^{d_q} q_i k_i\right)\\).
+Note that \\(d_q = d_k\\) (only vectors of equal dimensions can be dotted), so we could also say  \\(\mathrm{Var}(qk^{\top}) = \sum_{i=1}^{d_q} \mathrm{Var}(q_i k_i)\\).
 
 Let's use the definition of variance, \\(\mathrm{Var}(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2\\), to break down \\(\mathrm{Var}(q_i k_i)\\):
 
@@ -112,8 +112,8 @@ But remember, we're looking for some \\(c\\) so that \\(\mathrm{Var}(qk^{\top} \
 
 And that's our answer! Now you know why we divide by \\(\sqrt{d_k}\\) to normalize the dot product in attention mechanisms.
 
-(Thanks to Andrew Gu for reading a draft of this.)
+Thanks to Andrew Gu for reading a draft of this.
 
-[^1]: Interestingly, this excerpt from the paper is worded to imply that they found \\(\frac{1}{\sqrt{d_k}}\\) empirically. I wouldn't be surprised if the authors scaled up the dimension, looked at the dot product values, and thought "hmm yeah, seems to be growing at, like, \\(\sqrt{d_k}\\)".
+[^1]: Interestingly, the way this excerpt is worded implies that they found \\(\frac{1}{\sqrt{d_k}}\\) empirically. I wouldn't be surprised if the authors scaled up the dimension, looked at the dot product values, and thought "hmm yeah, seems to be growing at, like, \\(\sqrt{d_k}\\)".
 
 [^2]: I was inspired to write this post because I saw a [comment on LinkedIn that standardized \\(q_i\\) and \\(k_i\\)](https://www.linkedin.com/feed/update/urn:li:ugcPost:7095298483850481664/?commentUrn=urn%3Ali%3Acomment%3A%28ugcPost%3A7095298483850481664%2C7123707203437355008%29&replyUrn=urn%3Ali%3Acomment%3A%28ugcPost%3A7095298483850481664%2C7133444217841799168%29). This made the math seem simple and satisfying to do!
