@@ -1,0 +1,67 @@
++++
+title = "A simple performance optimization for softmax, explained"
+date = 2025-11-25
++++
+
+The softmax function is used frequently in neural networks, such as within large language models like ChatGPT. It converts a list of numbers into a probability distribution, with the values adding up to 1.
+
+{% katex(block=true) %}
+\begin{aligned}
+x &= [5,\;7,\;8] \\
+\mathrm{softmax}(x) &\approx [0.035,\; 0.259,\; 0.706]
+\end{aligned}
+{% end %}
+
+Softmax does this by exponentiating each value and then dividing by the sum of all the exponentiated values.
+
+{% katex(block=true) %}
+\begin{aligned}
+\mathrm{softmax}(x)_i = \frac{e^{x_i}}{\sum_{j=1}^{K} e^{x_j}}
+\end{aligned}
+{% end %}
+
+For example, using the previous array of values, this is how its softmax would be computed:
+
+{% katex(block=true) %}
+\begin{aligned}
+x &= [5,\;7,\;8] \\
+\mathrm{softmax}(x) &= \left[
+\frac{e^5}{e^5 + e^7 + e^8},\;
+\frac{e^7}{e^5 + e^7 + e^8},\;
+\frac{e^8}{e^5 + e^7 + e^8}
+\right]
+\end{aligned}
+{% end %}
+
+Obviously, softmax uses exponentials, or base \\(e\\) operations! 
+
+However, in real world implementations, [softmax is modified to use base 2 instead of base \\(e\\)](https://x.com/cHHillee/status/1993024196872749339): 
+
+> This is a standard optimization in FlashAttention, where the softmax exponents are a non-negligible cost of the inner loop. It rescales the inputs by 1/ln2 so that you can directly use exp2 instead of exp.
+
+But why base 2? Computers are much faster at computing base 2 operations compared to base \\(e\\). For example, let's say we have a variable with the value \\(4\\), which is \\(2^2\\), or `010` in binary. All a computer has to do to find \\(2^3\\) is shift `010` to the left to get `100`, or \\(8\\).
+
+So how do we convert the exponentials to base 2? With some simple math!
+
+We want to find some expression \\(y\\) so that \\(e^x = 2^y\\). We'll take the natural log of both sides to cancel out the \\(e\\) and use the logarithmic power rule to bring the \\(y\\) out.
+
+{% katex(block=true) %}
+\begin{aligned}
+e^x &= 2^y \\
+\ln(e^x) &= \ln(2^y) \\
+x &= \ln(2^y) \\
+x &= y \ln 2 \\
+y &= \frac{x}{\ln 2}
+\end{aligned}
+{% end %}
+
+We can now plug \\(y\\) back in: 
+
+{% katex(block=true) %}
+\begin{aligned}
+e^x &= 2^y \\
+e^x &= 2^{x/\ln 2}
+\end{aligned}
+{% end %}
+
+So that's why FlashAttention scales inputs by \\(1/\ln 2\\)!
