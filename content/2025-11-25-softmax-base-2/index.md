@@ -41,7 +41,7 @@ However, in real world implementations, [softmax is modified to use base 2 inste
 
 But why base 2? Computers are much faster at computing base 2 operations compared to base \\(e\\). For example, let's say we have a variable with the value \\(4\\), which is \\(2^2\\), or `010` in binary. All a computer has to do to find \\(2^3\\) is shift `010` to the left to get `100`, or \\(8\\).
 
-So how do we convert the exponentials to base 2? With some simple math!
+So how do we convert the exponentials to base 2? We could just use the exponential base change formula[^1], but it's fun (and satisfying) to derive it ourselves.
 
 We want to find some expression \\(y\\) so that \\(e^x = 2^y\\). We'll take the natural log of both sides to cancel out the \\(e\\) and use the logarithmic power rule to bring the \\(y\\) out.
 
@@ -65,3 +65,5 @@ e^x &= 2^{x/\ln 2}
 {% end %}
 
 So that's why FlashAttention scales inputs by \\(1/\ln 2\\)!
+
+[^1]: \\(a^b = c^{b \log_c a}\\)
