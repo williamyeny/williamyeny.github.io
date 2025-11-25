@@ -20,7 +20,7 @@ Softmax does this by exponentiating each value and then dividing by the sum of a
 \end{aligned}
 {% end %}
 
-For example, using the previous array of values, this is how its softmax would be computed:
+Using the previous example, here is how the softmax was computed:
 
 {% katex(block=true) %}
 \begin{aligned}
