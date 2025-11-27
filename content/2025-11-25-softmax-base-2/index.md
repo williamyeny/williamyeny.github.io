@@ -33,15 +33,13 @@ x &= [5,\;7,\;8] \\
 \end{aligned}
 {% end %}
 
-Obviously, softmax uses exponentials, or base \\(e\\) operations! 
+Obviously, softmax uses the exponential functional, or base \\(e\\) operations! 
 
-However, in real world implementations, [softmax is modified to use base 2 instead of base \\(e\\)](https://x.com/cHHillee/status/1993024196872749339): 
+However, in real world implementations, [softmax is modified to use base 2 instead of base \\(e\\)](https://x.com/cHHillee/status/1993024196872749339) because computers are much faster at computing base 2 operations compared to base \\(e\\):
 
 > This is a standard optimization in FlashAttention, where the softmax exponents are a non-negligible cost of the inner loop. It rescales the inputs by 1/ln2 so that you can directly use exp2 instead of exp.
 
-But why base 2? Computers are much faster at computing base 2 operations compared to base \\(e\\). For example, let's say we have a variable with the value \\(4\\), which is \\(2^2\\), or `010` in binary. All a computer has to do to find \\(2^3\\) is shift `010` to the left to get `100`, or \\(8\\).
-
-So how do we convert the exponentials to base 2? We could just use the exponential base change formula[^1], but it's fun (and satisfying) to derive it ourselves.
+So how do we convert the base \\(e\\) to base 2? We could just use the exponential base change formula[^1], but it's fun (and satisfying) to derive it ourselves.
 
 We want to find some expression \\(y\\) so that \\(e^x = 2^y\\). We'll take the natural log of both sides to cancel out the \\(e\\) and use the logarithmic power rule to bring the \\(y\\) out.
 
