@@ -33,7 +33,7 @@ x &= [5,\;7,\;8] \\
 \end{aligned}
 {% end %}
 
-Obviously, softmax uses the exponential functional, or base \\(e\\) operations! 
+Obviously, softmax uses many base \\(e\\) operations! 
 
 However, in real world implementations, [softmax is modified to use base 2 instead of base \\(e\\)](https://x.com/cHHillee/status/1993024196872749339) because computers are much faster at computing base 2 operations compared to base \\(e\\):
 
