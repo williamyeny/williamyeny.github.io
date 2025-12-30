@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Will Ye</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="https://will-ye.com/style.css">
+    <script>!function(){var e=window.Cohere=window.Cohere||[];if(e.invoked)console.error("Tried to load Cohere twice");else{e.invoked=!0,e.snippet="0.2",e.methods=["init","identify","stop","showCode","getSessionUrl","makeCall","addCallStatusListener","removeCallStatusListener","widget","addSessionUrlListener","removeSessionUrlListener",],e.methods.forEach(function(o){e[o]=function(){var t=Array.prototype.slice.call(arguments);t.unshift(o),e.push(t)}});var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://static.cohere.so/main.js",o.crossOrigin="anonymous";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(o,t)}}();</script>
+    <script>window.Cohere.init("HmoLpmLAXQxi7HwVR092zClX");</script>
+
+    <!-- Big thanks to this guy: https://louveta.gitlab.io/blog/katex/ -->
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+    integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" 
+    integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/mathtex-script-type.min.js" 
+    integrity="sha384-zWYbd0NBwgTsgIdFKVprSfTh1mbMPe5Hz1X3yY4Sd1h/K1cQoUe36OGwAGz/PcDy" crossorigin="anonymous"></script>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" 
+    integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+        
+    
+    
+
+    
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        
+    
+
+    
+    <meta name="title" content="Why do we normalize by the root of the dimension in attention?">
+    
+    
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+<div class="post-nav">
+  <a href="/">Back</a>
+</div>
+<div class="post-header">
+  <h1 class="post-title">Why do we normalize by the root of the dimension in attention?</h1>
+  
+    <p class="post-meta">November 23, 2025</p>
+  
+</div>
+<div class="post-content"><p>This is <em>attention</em>, a key part of modern LLMs such as ChatGPT:</p>
+<p>$$
+\mathrm{Attention}(Q, K, V) = \mathrm{softmax}\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)V
+$$</p>
+<p>While I won't break down every part of this definition (there are <a href="https://will-ye.com/attention-root/youtube.com/watch?v=eMlx5fFNoYc">better resources</a> for that), we'll quickly refresh what \(Q\) and \(K\) are -- matrices whose rows are query and key vectors. Each entry of \(QK^{\top}\) is the dot product between one query vector and one key vector.</p>
+<p>But here's the interesting part: why are we dividing by the square root of the dimension, \(\sqrt{d_k}\)?</p>
+<p>The original paper, <a href="https://arxiv.org/pdf/1706.03762">Attention Is All You Need</a>, explains it<sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup> like so:</p>
+<blockquote>
+<p>While for small values of \(d_k\) the two mechanisms perform similarly, additive attention outperforms
+dot product attention without scaling for larger values of \(d_k\). We suspect that for large values of
+\(d_k\), the dot products grow large in magnitude, pushing the softmax function into regions where it has
+extremely small gradients. To counteract this effect, we scale the dot products by \(\frac{1}{\sqrt{d_k}}\).</p>
+</blockquote>
+<p>Basically, as the dimension of \(K\) increase, the dot product values in the grid of \(QK^{\top}\) become too extreme. To fix this, those values are scaled down using \(\sqrt{d_k}\).</p>
+<p>That's fine and all, but why \(\sqrt{d_k}\) in particular? Why not just \(d_k\), or some other manipulation of \(d_k\)?</p>
+<p>We can figure this out using a bit of math!</p>
+<p>To make our lives easier, let's take a single query-key pair in \(QK^{\top}\) and call their vectors \(q\) and \(k\). We'll standardize their components<sup class="footnote-reference" id="fr-2-1"><a href="#fn-2">2</a></sup> to have a mean of 0 and a variance of 1:</p>
+<script type="math/tex;mode=display">\begin{aligned}
+\mathbb{E}[k_i] &= 0 \qquad & \mathbb{E}[q_i] &= 0 \\
+\mathrm{Var}(k_i) &= 1 \qquad & \mathrm{Var}(q_i) &= 1
+\end{aligned}</script>
+<p>The goal: we want to find some factor \(c\) that scales the dot product so that the overall variance is the same as the variance of the inputs to the dot product:</p>
+<p>$$
+\mathrm{Var}(qk^{\top} \cdot c) = 1
+$$</p>
+<p>The dot product between \(q\) and \(k\) is just the sum of the elements from \(q\) multiplied by elements of the same index from \(k\). This means the variance of the dot product is the sum of the variances of its products (assuming independence):</p>
+<script type="math/tex;mode=display">\begin{aligned}
+\mathrm{Var}(qk^{\top}) &= \mathrm{Var}\left(\sum_{i=1}^{d_k} q_i k_i\right) \\
+&= \sum_{i=1}^{d_k} \mathrm{Var}(q_i k_i) \\
+\end{aligned}</script>
+<p>Note that \(d_q = d_k\) (only vectors of equal dimensions can be dotted), so we could also say  \(\mathrm{Var}(qk^{\top}) = \sum_{i=1}^{d_q} \mathrm{Var}(q_i k_i)\).</p>
+<p>Let's use the definition of variance, \(\mathrm{Var}(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2\), to break down \(\mathrm{Var}(q_i k_i)\):</p>
+<p>$$ \mathrm{Var}(q_i k_i) = \mathbb{E}[{q_i}^2 {k_i}^2] - \mathbb{E}[q_i k_i]^2 $$</p>
+<p>Now we can use the expected value of the product of two independent variables, \(\mathbb{E}[XY] = \mathbb{E}[X] \mathbb{E}[Y]\), to break it down further:</p>
+<script type="math/tex;mode=display">\begin{aligned}
+\mathrm{Var}(q_i k_i) = \mathbb{E}[{q_i}^2] \mathbb{E}[{k_i}^2] - (\mathbb{E}[q_i]\mathbb{E}[k_i])^2
+\end{aligned}</script>
+<p>But notice how \(k_i\) and \(q_i\) have a mean of \(0\), so the second part zeroes out!</p>
+<script type="math/tex;mode=display">\begin{aligned}
+\mathrm{Var}(q_i k_i) &= \mathbb{E}[{q_i}^2] \mathbb{E}[{k_i}^2] - (0 \cdot 0)^2 \\
+\mathrm{Var}(q_i k_i) &= \mathbb{E}[{q_i}^2] \mathbb{E}[{k_i}^2]
+\end{aligned}</script>
+<p>We can figure out what \(\mathbb{E}[{q_i}^2]\) is pretty easily since we know \( \mathrm{Var}(q_i) \). Again, using the definition of variance:</p>
+<script type="math/tex;mode=display">\begin{aligned}
+\mathrm{Var}(q_i) &= 1\\
+\mathbb{E}[{q_i}^2] - \mathbb{E}[q_i]^2 &= 1 \\
+\mathbb{E}[{q_i}^2] - 0^2 &= 1 \\
+\mathbb{E}[{q_i}^2] &= 1
+\end{aligned}</script>
+<p>Since \( \mathrm{Var}(k_i) = \mathrm{Var}(q_i) \), we can also say \(\mathbb{E}[{k_i}^2] = 1\)</p>
+<p>Putting it all together, we have the variance of a single dot product value!</p>
+<p>$$\mathrm{Var}(q_i k_i) = \mathbb{E}[{q_i}^2] \mathbb{E}[{k_i}^2] = 1 \cdot 1 = 1$$</p>
+<p>Now we can figure out the overall variance of the dot product:</p>
+<script type="math/tex;mode=display">\begin{aligned}
+\mathrm{Var}(qk^{\top}) &= \sum_{i=1}^{d_k} \mathrm{Var}(q_i k_i) \\
+&= \sum_{i=1}^{d_k} 1 \\
+&= d_k
+\end{aligned}</script>
+<p>But remember, we're looking for some \(c\) so that \(\mathrm{Var}(qk^{\top} \cdot c) = 1 \). To do so, we can rearrange the equation and use the variance scaling rule \(a^2\mathrm{Var}(X) = \mathrm{Var}(aX)\).</p>
+<script type="math/tex;mode=display">\begin{aligned}
+\mathrm{Var}(qk^{\top}) &= d_k \\
+\frac{1}{d_k} \mathrm{Var}(qk^{\top}) &= 1 \\
+\mathrm{Var}(qk^{\top} \cdot \frac{1}{\sqrt{d_k}}) &= 1 \\
+\end{aligned}</script>
+<p>And that's our answer! Now you know why we divide by \(\sqrt{d_k}\) to normalize the dot product in attention mechanisms.</p>
+<p>Thanks to Andrew Gu for reading a draft of this.</p>
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p>Interestingly, the way this excerpt is worded implies that they found \(\frac{1}{\sqrt{d_k}}\) empirically. I wouldn't be surprised if the authors scaled up the dimension, looked at the dot product values, and thought "hmm yeah, seems to be growing at, like, \(\sqrt{d_k}\)". <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="fn-2">
+<p>I was inspired to write this post because I saw a <a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7095298483850481664/?commentUrn=urn%3Ali%3Acomment%3A%28ugcPost%3A7095298483850481664%2C7123707203437355008%29&amp;replyUrn=urn%3Ali%3Acomment%3A%28ugcPost%3A7095298483850481664%2C7133444217841799168%29">comment on LinkedIn that standardized \(q_i\) and \(k_i\)</a> (ignore the actual post; it is AI-generated slop). This made the math seem simple and satisfying to do! <a href="#fr-2-1">↩</a></p>
+</li>
+</ol>
+</section>
+</div>
+</div>
+    </section>
+  </body>
+</html>

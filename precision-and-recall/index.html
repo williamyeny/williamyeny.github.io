@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Will Ye</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="https://will-ye.com/style.css">
+    <script>!function(){var e=window.Cohere=window.Cohere||[];if(e.invoked)console.error("Tried to load Cohere twice");else{e.invoked=!0,e.snippet="0.2",e.methods=["init","identify","stop","showCode","getSessionUrl","makeCall","addCallStatusListener","removeCallStatusListener","widget","addSessionUrlListener","removeSessionUrlListener",],e.methods.forEach(function(o){e[o]=function(){var t=Array.prototype.slice.call(arguments);t.unshift(o),e.push(t)}});var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://static.cohere.so/main.js",o.crossOrigin="anonymous";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(o,t)}}();</script>
+    <script>window.Cohere.init("HmoLpmLAXQxi7HwVR092zClX");</script>
+
+    <!-- Big thanks to this guy: https://louveta.gitlab.io/blog/katex/ -->
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+    integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" 
+    integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/mathtex-script-type.min.js" 
+    integrity="sha384-zWYbd0NBwgTsgIdFKVprSfTh1mbMPe5Hz1X3yY4Sd1h/K1cQoUe36OGwAGz/PcDy" crossorigin="anonymous"></script>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" 
+    integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+        
+    
+    
+
+    
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        
+    
+
+    
+    <meta name="title" content="A simple guide to precision and recall">
+    
+    
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+<div class="post-nav">
+  <a href="/">Back</a>
+</div>
+<div class="post-header">
+  <h1 class="post-title">A simple guide to precision and recall</h1>
+  
+    <p class="post-meta">March 29, 2025</p>
+  
+</div>
+<div class="post-content"><p><em>Precision</em> and <em>recall</em> are two important metrics in computer science, but they're pretty general concepts. <strong>They just describe how good something/someone is at identifying/retrieving stuff.</strong></p>
+<p>They're quite simple, yet every explanation is <em>awful</em> for beginners or non-computer people. You should not have to memorize formulas or read confusion matrices to get the gist.</p>
+<img
+  src="pr-what.png"
+  style="width:75%;"
+/>
+<h1 id="an-easy-example">An easy example</h1>
+<p>Let's say we have a bunch of red and blue circles.</p>
+<img
+  src="pr-1.svg"
+  style="width:75%;"
+/>
+<p>Our goal is to draw a box that "identifies" all the red circles -- capturing as many red ones as we can, while excluding as many blue ones as possible. Let's give it a try.</p>
+<img
+  src="pr-2.svg"
+  style="width:75%;"
+/>
+<p>So how good is our box at splitting the red circles from the blue?</p>
+<p>Let's start with figuring out the <em>precision</em>. Our precision here is the ratio of circles in the box that are actually red. 3 out of 4 circles in our box is red, so our precision is 3/4 = 75%.</p>
+<img
+  src="pr-3.svg"
+  style="width:75%;"
+/>
+<p>Next, let's figure out the <em>recall</em>. Our recall here is the ratio of all the red circles that we managed to get in the box. We managed to get 3 out of a total of 5 red circles in the box, so our recall is 3/5 = 60%.</p>
+<img
+  src="pr-4.svg"
+  style="width:75%;"
+/>
+<p>Now, let's generalize! Precision is "if something is identified as X, what are the chances it's actually X?" and recall is "of all the things that are actually X, how many did we correctly identify?"</p>
+<p>In a perfect world, we would be able to draw a box with 100% precision and 100% recall. But realistically, we have to balance the values.</p>
+<p>For example, let's say we want to increase our precision to 100%, or get all of the circles in the box to be red. We can do that by shrinking the box.</p>
+<img
+  src="pr-5.svg"
+  style="width:75%;"
+/>
+<p>Our precision is now at 100%, but at what cost? Out of the 5 red circles, only 2 of them are in the box now, meaning our recall dropped from 60% to 40%!</p>
+<p>Similarly, we can reach 100% recall by extending the box, but our precision drops from 75% to 62.5% (there are now 8 circles in the box, with 5 of them being red).</p>
+<img
+  src="pr-6.svg"
+  style="width:75%;"
+/>
+<p>This means that precision and recall are inversely related -- improving one value usually means the other has to suffer.</p>
+<img
+  src="pr-7.svg"
+  style="width:75%;"
+/>
+<h1 id="real-world-use">Real world use</h1>
+<p>Precision and recall are very useful for roasting computer programs.</p>
+<img
+  src="pr-bad-robot.png"
+  style="width:100%;"
+/>
+<p>Since precision and recall are inversely related, we can use them to tweak retrieval algorithms or machine learning models based on the intended goal.</p>
+<p>For example, a program like FaceID should prioritize precision -- it's fine if it <em>occasionally</em> doesn't work on our face as long as randos would never be able to unlock our iPhone.</p>
+<p>On the other hand, a screening tool for a highly deadly disease should prioritize recall -- a few false alarms is acceptable as long as we catch every possible case.</p>
+<p>What about a non-computer scenario? If you bump into someone you know but you're bad at names, you should only say their name if you're very confident you remember what it is (high precision) and not start listing off names like a psychopath (high recall).</p>
+<p>That's it! That's precision and recall.</p>
+</div>
+</div>
+    </section>
+  </body>
+</html>

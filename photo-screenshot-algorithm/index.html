@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Will Ye</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="https://will-ye.com/style.css">
+    <script>!function(){var e=window.Cohere=window.Cohere||[];if(e.invoked)console.error("Tried to load Cohere twice");else{e.invoked=!0,e.snippet="0.2",e.methods=["init","identify","stop","showCode","getSessionUrl","makeCall","addCallStatusListener","removeCallStatusListener","widget","addSessionUrlListener","removeSessionUrlListener",],e.methods.forEach(function(o){e[o]=function(){var t=Array.prototype.slice.call(arguments);t.unshift(o),e.push(t)}});var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://static.cohere.so/main.js",o.crossOrigin="anonymous";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(o,t)}}();</script>
+    <script>window.Cohere.init("HmoLpmLAXQxi7HwVR092zClX");</script>
+
+    <!-- Big thanks to this guy: https://louveta.gitlab.io/blog/katex/ -->
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+    integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" 
+    integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/mathtex-script-type.min.js" 
+    integrity="sha384-zWYbd0NBwgTsgIdFKVprSfTh1mbMPe5Hz1X3yY4Sd1h/K1cQoUe36OGwAGz/PcDy" crossorigin="anonymous"></script>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" 
+    integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+        
+    
+    
+
+    
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        
+    
+
+    
+    <meta name="title" content="Photo or screenshot?">
+    
+    
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+<div class="post-nav">
+  <a href="/">Back</a>
+</div>
+<div class="post-header">
+  <h1 class="post-title">Photo or screenshot?</h1>
+  
+    <p class="post-meta">June 2, 2025</p>
+  
+</div>
+<div class="post-content"><p>At <a href="https://ramp.com/">Ramp</a>, our customers upload two types of receipt images.</p>
+<p>Photos:</p>
+<img
+  src="receipt-photo.jpg"
+  style="width:75%;"
+/>
+<p>And screenshots:</p>
+<img
+  src="receipt-screenshot.png"
+  style="width:75%;"
+/>
+<p>I was bestowed with the privilege of writing an algorithm that distinguishes between them.</p>
+<p>However, there was one major limitation. I could not use any libraries other than <a href="https://pypi.org/project/pillow/">Pillow</a>. No OpenCV or Tesseract or classification models, just straight rawdogging it.</p>
+<p>After a few failed approaches<sup class="footnote-reference" id="fr-1-1"><a href="#fn-1">1</a></sup>, I came up with a solution that uses color <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy</a>:</p>
+<pre data-lang="python" style="background-color:#ffffff;color:#000000;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#0000ff;">import </span><span>math
+</span><span style="color:#0000ff;">from </span><span>PIL </span><span style="color:#0000ff;">import </span><span>Image
+</span><span style="color:#0000ff;">from </span><span>typing </span><span style="color:#0000ff;">import </span><span>Literal
+</span><span>
+</span><span style="color:#0000ff;">def </span><span style="color:#0000a2;">is_image_photo_or_screenshot</span><span>(
+</span><span>    img_path: </span><span style="color:#6d79de;">str
+</span><span>) -&gt; Literal[</span><span style="color:#ff0080;">&quot;photo&quot;</span><span>, </span><span style="color:#ff0080;">&quot;screenshot&quot;</span><span>]:
+</span><span>    </span><span style="color:#0000ff;">with </span><span>Image.open(img_path) </span><span style="color:#0000ff;">as </span><span>img:
+</span><span>        </span><span style="color:#0000ff;">if </span><span>img.mode </span><span style="color:#0000ff;">!= </span><span style="color:#ff0080;">&quot;RGB&quot;</span><span>:
+</span><span>            img </span><span style="color:#0000ff;">= </span><span>img.convert(</span><span style="color:#ff0080;">&quot;RGB&quot;</span><span>)
+</span><span>        img.thumbnail(
+</span><span>            (</span><span style="color:#ff0080;">100</span><span>, </span><span style="color:#ff0080;">100</span><span>),
+</span><span>            resample</span><span style="color:#0000ff;">=</span><span>Image.Resampling.</span><span style="color:#006600;">NEAREST</span><span>,
+</span><span>        )
+</span><span>
+</span><span>        total_pixels </span><span style="color:#0000ff;">= </span><span>img.width </span><span style="color:#0000ff;">* </span><span>img.height
+</span><span>        colors </span><span style="color:#0000ff;">= </span><span>img.getcolors(maxcolors</span><span style="color:#0000ff;">=</span><span>total_pixels) </span><span style="color:#0000ff;">or </span><span>[]
+</span><span>
+</span><span>        entropy </span><span style="color:#0000ff;">= </span><span style="color:#ff0080;">0.0
+</span><span>        </span><span style="color:#0000ff;">for </span><span>count, </span><span style="color:#006600;">_ </span><span style="color:#0000ff;">in </span><span>colors:
+</span><span>            p </span><span style="color:#0000ff;">= </span><span>count </span><span style="color:#0000ff;">/ </span><span>total_pixels
+</span><span>            entropy </span><span style="color:#0000ff;">-= </span><span>p </span><span style="color:#0000ff;">* </span><span>math.log(p, </span><span style="color:#ff0080;">2</span><span>)
+</span><span>
+</span><span>        </span><span style="color:#804000;"># Normalize to 0.0-1.0 range
+</span><span>        normalized_entropy </span><span style="color:#0000ff;">= </span><span>entropy </span><span style="color:#0000ff;">/ </span><span>math.log(total_pixels, </span><span style="color:#ff0080;">2</span><span>)
+</span><span>
+</span><span>        </span><span style="color:#0000ff;">if </span><span>normalized_entropy </span><span style="color:#0000ff;">&gt; </span><span style="color:#ff0080;">0.5</span><span>:
+</span><span>            </span><span style="color:#0000ff;">return </span><span style="color:#ff0080;">&quot;photo&quot;
+</span><span>        </span><span style="color:#0000ff;">return </span><span style="color:#ff0080;">&quot;screenshot&quot;
+</span></code></pre>
+<p>The intuition behind this algorithm is simple. A photo has a large amount of unique colors. Even the blank area of a physical receipt in a photo will have dozens of slightly different whites. The opposite is true of a screenshot -- most of the pixels neatly belong to a handful of colors. This algorithm just measures the distribution of colors.</p>
+<p>I ran a test on a small dataset of receipts I prepared:</p>
+<img
+  src="photo-screenshot-distribution.png"
+  style="width:100%;"
+/>
+<p>Looking good! We only missed 6 screenshots<sup class="footnote-reference" id="fr-2-1"><a href="#fn-2">2</a></sup> out of almost 3000 images, a 99.8% overall accuracy. It's also quite speedy, due to the trick of downsizing the image to 100x100 pixels<sup class="footnote-reference" id="fr-3-1"><a href="#fn-3">3</a></sup>.</p>
+<p>This lightweight algorithm now runs on the hundreds of millions of receipts Ramp processes a year.</p>
+<p>If this sounded interesting to you, <a href="https://ramp.com/careers">Ramp is hiring</a>!</p>
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn-1">
+<p>The first approach, originally written by my coworker <a href="https://x.com/yunyu_l">Yunyu</a>, measured the percentage of the most common color, since most screenshots are set against a background with a single flat color. However, it struggled with screenshots that had compression artifacts, even after quantizing the colors. I also could not find a reasonable threshold because many screenshots do have two or more background colors. <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="fn-2">
+<p>I can't post the wrongly-classified receipt screenshots for privacy reasons, but these had complicated graphics or even photos embedded in them. I'm willing to write these off as edge cases. <a href="#fr-2-1">↩</a></p>
+</li>
+<li id="fn-3">
+<p>I was concerned that aggressively downsizing the image would result in too much information loss. Initially, it did ruin the accuracy, but that was because <code>img.thumbnail</code>'s default resample method is "bicubic," or <code>Image.Resampling.BICUBIC</code>. This meant PIL would generate new colors when downsizing the image, which threw off the algorithm. Changing the method to "nearest neighbor", or <code>Image.Resampling.NEAREST</code>, restored the accuracy. <a href="#fr-3-1">↩</a></p>
+</li>
+</ol>
+</section>
+</div>
+</div>
+    </section>
+  </body>
+</html>

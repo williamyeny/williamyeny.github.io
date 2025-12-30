@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Will Ye</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="https://will-ye.com/style.css">
+    <script>!function(){var e=window.Cohere=window.Cohere||[];if(e.invoked)console.error("Tried to load Cohere twice");else{e.invoked=!0,e.snippet="0.2",e.methods=["init","identify","stop","showCode","getSessionUrl","makeCall","addCallStatusListener","removeCallStatusListener","widget","addSessionUrlListener","removeSessionUrlListener",],e.methods.forEach(function(o){e[o]=function(){var t=Array.prototype.slice.call(arguments);t.unshift(o),e.push(t)}});var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://static.cohere.so/main.js",o.crossOrigin="anonymous";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(o,t)}}();</script>
+    <script>window.Cohere.init("HmoLpmLAXQxi7HwVR092zClX");</script>
+
+    <!-- Big thanks to this guy: https://louveta.gitlab.io/blog/katex/ -->
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+    integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" 
+    integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/mathtex-script-type.min.js" 
+    integrity="sha384-zWYbd0NBwgTsgIdFKVprSfTh1mbMPe5Hz1X3yY4Sd1h/K1cQoUe36OGwAGz/PcDy" crossorigin="anonymous"></script>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" 
+    integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+        
+    
+    
+
+    
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        
+    
+
+    
+    <meta name="title" content="How to actually find a grow light for your indoor plants">
+    
+    
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+<div class="post-nav">
+  <a href="/">Back</a>
+</div>
+<div class="post-header">
+  <h1 class="post-title">How to actually find a grow light for your indoor plants</h1>
+  
+    <p class="post-meta">January 24, 2025</p>
+  
+</div>
+<div class="post-content"><p>I have a small collection of cacti in my New York City apartment. It isn't warm or sunny enough here to grow cacti outdoors, so I've had to grow them indoors, which means a grow light is necessary to keep the cacti happy.</p>
+<img
+  src="cacti.JPEG"
+  style="width:75%;"
+/>
+<p>But which grow light? When shopping for one, I decided to avoid buying the first thing on Amazon or checking Reddit for recommendations. Instead, I choose to start with the plant.</p>
+<h1 id="what-is-the-plant-and-how-much-sun-does-it-need">What is the plant and how much sun does it need?</h1>
+<p>Before we even think about grow lights, our first goal should be figuring out how much sun the plant needs.</p>
+<p>I mostly own a species of cacti called <a href="https://en.wikipedia.org/wiki/Trichocereus_macrogonus_var._pachanoi">Trichocereus pachanoi</a> (colloquially known as "San Pedro"). To figure out how much sun the species needs, we need to find its habitat. <a href="https://www.llifle.com/Encyclopedia/CACTI/Family/Cactaceae/8471/Trichocereus_pachanoi#:~:text=Trichocereus%20pachanoi&amp;text=Origin%20and%20Habitat%3A%20Mountains%20of,3300%20metres%20above%20sea%20level.">Some quick research</a> shows that San Pedro is native to Ecuador, Peru, and Colombia, specifically the mountainous region.</p>
+<img
+  src="trich-habitat.png"
+  style="width:100%;"
+/>
+<p>Now, we need to find the <a href="https://en.wikipedia.org/wiki/Daily_light_integral">daily light integral (DLI)</a> of those regions. DLI measures the amount of <em>photosynthetically active photons</em> per day, or how much plant-usable sunlight hits the ground. With another quick search on Google, we can find <a href="https://horti-generation.com/daily-light-integral-interactive-tool/">the DLI values on a map</a>:</p>
+<img
+  src="dli-values.png"
+  style="width:100%;"
+/>
+<p>However, don't forget we're looking for the <em>mountainous</em> regions. Looking at the map, we can say that 30-38 mols/m^2/day is a good starting point.</p>
+<img
+  src="dli-values-annotated.png"
+  style="width:100%;"
+/>
+<h1 id="converting-dli-to-ppfd">Converting DLI to PPFD</h1>
+<p>Why is DLI even useful in the first place? We can convert it to photosynthetic photon flux density (PPFD). PPFD is how grow light intensity is measured, and is usually published on grow light product pages.</p>
+<p>Before we calculate the PPFD, we'll need to come up with the photoperiod. You can think about it as "how long do I want my grow light on a day?", but don't forget that the shorter the photoperiod, the more intense the light will have to be. I chose 12 hours.</p>
+<p>Now, let's convert the 30-38 DLI to PPFD using an <a href="https://www.nexsel.tech/how-to-calculate-ppfd-from-dli.php">online calculator</a>.</p>
+<img
+  src="30-dli.png"
+  style="width:75%;"
+/>
+<img
+  src="38-dli.png"
+  style="width:75%;"
+/>
+<p>Now that we have our PPFD value range of 700-880, we now know what to look for when we shop for grow lights!</p>
+<h1 id="buying-a-grow-light-using-ppfd">Buying a grow light using PPFD</h1>
+<p>When looking for a grow light online, the manufacturer should have a PPFD chart in the listing:</p>
+<img
+  src="growlight-ppfd.png"
+  style="width:100%;"
+/>
+<p>If you don't see this chart, don't buy!</p>
+<p>There are a couple things to look out for. We need to note how much of an area this grow light covers, and how far above our plants we should mount the grow light. All these are noted in the image.</p>
+<img
+  src="growlight-ppfd-annotated.png"
+  style="width:75%;"
+/>
+<p>Looking at the PPFD values in the chart, our plants would be happy for the most part, but they might not get enough light if we put them in the outer areas:</p>
+<img
+  src="growlight-ppfd-outer.png"
+  style="width:75%;"
+/>
+<p>We can look for another grow light with higher PPFD values, but there are tricks we can do for less optimal grow lights.</p>
+<p>First, we can recalculate the PPFD values with a longer photoperiod, which should result in a lower PPFD requirement.</p>
+<p>We can also "increase" light output by mounting the grow light closer to the plant. Be careful as this also reduces the effective grow area, and you may accidentally add <em>too</em> much light due to the <a href="https://en.wikipedia.org/wiki/Inverse-square_law">inverse-square law</a>.</p>
+<h1 id="putting-it-all-together">Putting it all together</h1>
+<p>Now all we have to do buy the grow light and follow all the information we gathered. In this case, we'll have our plants in a 2x2 foot area, mount the grow light 12 inches above the plants, and have the grow light on for 12 hours a day. However, we did see that plants on the outer areas may be a little more starved for light, so we may consider lowering the grow light to 10 inches and/or increasing photoperiod to 14 hours.</p>
+<h1 id="caveats-and-tips">Caveats and tips</h1>
+<ul>
+<li>Artifical lighting is not the same as real sunlight (e.g., UV). I'm not 100% sure of how it affects plant growth, but some manufacturers are adding UV cells to their lights and claiming it helps significantly. My recommendation is to overshoot the PPFD a bit just to be safe.</li>
+<li>Some grow lights have a knob that adjusts intensity. When you see a PPFD chart, assume that the knob is turned all the way to the highest intensity.</li>
+<li>Some manufacturers are not super honest about their PPFD ratings. You can find <a href="https://youtu.be/TmpQ7TO-szA?si=he8AFGRNag8EPOI8&amp;t=167">3rd party tests</a> or test the PPFD yourself using a light meter or phone app.</li>
+<li>Do NOT buy those stupid purple lights. They do not work.</li>
+<li>If your grow light doesn't come with a timer, you'll need to purchase an <a href="https://www.amazon.com/Century-Indoor-24-Hour-Mechanical-Outlet/dp/B01LPSGBZS">outlet timer</a></li>
+<li>Avoid having your grow light on for 24 hours/day. Not only will your electricity bill skyrocket, but many plants actually require periodic darkness, e.g. the <a href="https://en.wikipedia.org/wiki/Crassulacean_acid_metabolism">CAM pathway for gas exchange</a>.</li>
+</ul>
+</div>
+</div>
+    </section>
+  </body>
+</html>
