@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Will Ye</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="https://will-ye.com/style.css">
+    <script>!function(){var e=window.Cohere=window.Cohere||[];if(e.invoked)console.error("Tried to load Cohere twice");else{e.invoked=!0,e.snippet="0.2",e.methods=["init","identify","stop","showCode","getSessionUrl","makeCall","addCallStatusListener","removeCallStatusListener","widget","addSessionUrlListener","removeSessionUrlListener",],e.methods.forEach(function(o){e[o]=function(){var t=Array.prototype.slice.call(arguments);t.unshift(o),e.push(t)}});var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://static.cohere.so/main.js",o.crossOrigin="anonymous";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(o,t)}}();</script>
+    <script>window.Cohere.init("HmoLpmLAXQxi7HwVR092zClX");</script>
+
+    <!-- Big thanks to this guy: https://louveta.gitlab.io/blog/katex/ -->
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+    integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" 
+    integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/mathtex-script-type.min.js" 
+    integrity="sha384-zWYbd0NBwgTsgIdFKVprSfTh1mbMPe5Hz1X3yY4Sd1h/K1cQoUe36OGwAGz/PcDy" crossorigin="anonymous"></script>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" 
+    integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+        
+    
+    
+
+    
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        
+    
+
+    
+    <meta name="title" content="Shifting bits for the first time in company history">
+    
+    
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+<div class="post-nav">
+  <a href="/">Back</a>
+</div>
+<div class="post-header">
+  <h1 class="post-title">Shifting bits for the first time in company history</h1>
+  
+    <p class="post-meta">September 2, 2025</p>
+  
+</div>
+<div class="post-content"><p>I'm excited and humbled to announce that I'm the first person to add non-trivial bit shift code to <a href="https://ramp.com/">Ramp</a>'s codebase.</p>
+<p>At Ramp, I'm responsible for determining if a user-uploaded business receipt matches the transaction information on our end. One of the heuristics we use is if the amount on the receipt is the same as the transaction's amount.</p>
+<p>But it's not as simple. We'd still want to check if any combination of line item amounts on the receipt add up to the transaction amount.</p>
+<p>For example, given a receipt like so:</p>
+<pre style="background-color:#ffffff;color:#000000;"><code><span>Sept. 2 2025
+</span><span>Agu&#39;s Coffee And Books
+</span><span>---
+</span><span>Matcha Latte..................$10
+</span><span>Feminism is for Everybody.....$15
+</span><span>Labubu......................$1000
+</span><span>---
+</span><span>Total: $1025
+</span></code></pre>
+<p>The transaction amount $1010 <em>could</em> still be a match -- $10 + $1000 = $1010.</p>
+<p>So how do we determine if any combination of numbers could sum up to a certain number?</p>
+<p>This is a <a href="https://en.wikipedia.org/wiki/Subset_sum_problem">subset sum problem</a>. And apparently, the fastest implementations use bit shifting.</p>
+<pre data-lang="python" style="background-color:#ffffff;color:#000000;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#0000ff;">def </span><span style="color:#0000a2;">subset_sum</span><span>(nums: </span><span style="color:#6d79de;">list</span><span>[</span><span style="color:#6d79de;">int</span><span>], target: </span><span style="color:#6d79de;">int</span><span>) -&gt; </span><span style="color:#6d79de;">bool</span><span>:
+</span><span>    </span><span style="color:#804000;"># &quot;ChatGPT, write the most efficient subset sum algorithm
+</span><span>    </span><span style="color:#804000;"># in Python that handles negatives, make no mistakes.&quot;
+</span><span>
+</span><span>    </span><span style="color:#0000ff;">if len</span><span>(nums) </span><span style="color:#0000ff;">&gt; </span><span style="color:#ff0080;">100</span><span>:
+</span><span>        </span><span style="color:#804000;"># Fuck it, *O(1)s your algorithm*
+</span><span>        </span><span style="color:#0000ff;">return </span><span style="color:#004080;">False
+</span><span>
+</span><span>    nums </span><span style="color:#0000ff;">= </span><span style="color:#6d79de;">list</span><span>(nums)
+</span><span>    neg_sum </span><span style="color:#0000ff;">= sum</span><span>(x </span><span style="color:#0000ff;">for </span><span>x </span><span style="color:#0000ff;">in </span><span>nums </span><span style="color:#0000ff;">if </span><span>x </span><span style="color:#0000ff;">&lt; </span><span style="color:#ff0080;">0</span><span>)
+</span><span>    pos_sum </span><span style="color:#0000ff;">= sum</span><span>(x </span><span style="color:#0000ff;">for </span><span>x </span><span style="color:#0000ff;">in </span><span>nums </span><span style="color:#0000ff;">if </span><span>x </span><span style="color:#0000ff;">&gt; </span><span style="color:#ff0080;">0</span><span>)
+</span><span>    </span><span style="color:#0000ff;">if </span><span>target </span><span style="color:#0000ff;">&lt; </span><span>neg_sum </span><span style="color:#0000ff;">or </span><span>target </span><span style="color:#0000ff;">&gt; </span><span>pos_sum:  </span><span style="color:#804000;"># impossible
+</span><span>        </span><span style="color:#0000ff;">return </span><span style="color:#004080;">False
+</span><span>
+</span><span>    </span><span style="color:#804000;"># Offset so lowest possible sum is 0
+</span><span>    offset </span><span style="color:#0000ff;">= -</span><span>neg_sum
+</span><span>    bits </span><span style="color:#0000ff;">= </span><span style="color:#ff0080;">1 </span><span style="color:#0000ff;">&lt;&lt; </span><span>offset
+</span><span>
+</span><span>    </span><span style="color:#804000;"># DP via bit‑shifts
+</span><span>    </span><span style="color:#0000ff;">for </span><span>x </span><span style="color:#0000ff;">in </span><span>nums:
+</span><span>        bits </span><span style="color:#0000ff;">|= </span><span>bits </span><span style="color:#0000ff;">&lt;&lt; </span><span>x </span><span style="color:#0000ff;">if </span><span>x </span><span style="color:#0000ff;">&gt;= </span><span style="color:#ff0080;">0 </span><span style="color:#0000ff;">else </span><span>bits </span><span style="color:#0000ff;">&gt;&gt; -</span><span>x
+</span><span>
+</span><span>    </span><span style="color:#0000ff;">return </span><span>(bits </span><span style="color:#0000ff;">&gt;&gt; </span><span>(target </span><span style="color:#0000ff;">+ </span><span>offset)) </span><span style="color:#0000ff;">&amp; </span><span style="color:#ff0080;">1 </span><span style="color:#0000ff;">== </span><span style="color:#ff0080;">1
+</span></code></pre>
+<p>Sure, I didn't write most of it, but it still counts for something, right?</p>
+</div>
+</div>
+    </section>
+  </body>
+</html>

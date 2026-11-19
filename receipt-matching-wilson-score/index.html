@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Will Ye</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <link rel="stylesheet" href="https://will-ye.com/style.css">
+    <script>!function(){var e=window.Cohere=window.Cohere||[];if(e.invoked)console.error("Tried to load Cohere twice");else{e.invoked=!0,e.snippet="0.2",e.methods=["init","identify","stop","showCode","getSessionUrl","makeCall","addCallStatusListener","removeCallStatusListener","widget","addSessionUrlListener","removeSessionUrlListener",],e.methods.forEach(function(o){e[o]=function(){var t=Array.prototype.slice.call(arguments);t.unshift(o),e.push(t)}});var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://static.cohere.so/main.js",o.crossOrigin="anonymous";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(o,t)}}();</script>
+    <script>window.Cohere.init("HmoLpmLAXQxi7HwVR092zClX");</script>
+
+    <!-- Big thanks to this guy: https://louveta.gitlab.io/blog/katex/ -->
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+    integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" 
+    integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/mathtex-script-type.min.js" 
+    integrity="sha384-zWYbd0NBwgTsgIdFKVprSfTh1mbMPe5Hz1X3yY4Sd1h/K1cQoUe36OGwAGz/PcDy" crossorigin="anonymous"></script>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" 
+    integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+        
+    
+    
+
+    
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" 
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        
+    
+
+    
+    <meta name="title" content="Detecting bad experiences using Reddit&#x27;s comment ranking algorithm">
+    
+    
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+<div class="post-nav">
+  <a href="/">Back</a>
+</div>
+<div class="post-header">
+  <h1 class="post-title">Detecting bad experiences using Reddit&#x27;s comment ranking algorithm</h1>
+  
+    <p class="post-meta">December 11, 2024</p>
+  
+</div>
+<div class="post-content"><p>At <a href="https://ramp.com/">Ramp</a>, which makes finance software for businesses, I work on a core feature called "receipt matching." Businesses are required by law to attach receipts to most transactions, and since businesses make many transactions, matching up all the receipts to the right transactions can be incredibly time-consuming! With the receipt matching feature, a business can submit any receipt and an algorithm will find the right transaction automatically.</p>
+<p>While the receipt matching system works flawlessly for most, some customers may experience persistent matching failures. This is usually due to a configuration issue for the specific customer, which requires manual intervention rather than broad changes to the receipt matching system.</p>
+<p>Our goal is to become more proactive at detecting these specific cases. For example, if a customer submits 100 receipts but only 10 of them match, we should be alerted instead of waiting for a complaint. So, when exactly should we be alerted?</p>
+<h2 id="a-naive-approach">A naive approach</h2>
+<p>Doesn't sound too hard, right? For one customer (a <code>business</code>), we could divide the number of receipts that didn't match by the total number of receipts, and then sort. For example, a business with 4 out of 5 receipts that failed to match would take priority over a business with 2 out of 10 receipts that failed to match.</p>
+<p>Except this doesn't work when trying to find the <em>worst</em> experiences out of many businesses. For example, let's say we have</p>
+<ul>
+<li>Business A, who submitted 3 receipts and 2 didn't match</li>
+<li>Business B, who submitted 300 receipts and 180 failed to match</li>
+</ul>
+<p>Business A has a worse ratio than Business B, but we definitely care more about Business B. Business A could've just accidentally uploaded the wrong files once, but Business B is almost certainly experiencing a systemic issue.</p>
+<p>The problem? We don't adjust the scoring with sample size.</p>
+<h2 id="a-better-approach">A better approach</h2>
+<p>I stumbled upon <a href="https://medium.com/hacking-and-gonzo/how-reddit-ranking-algorithms-work-ef111e33d0d9">a blog post on how Reddit reworked their comment ranking algorithm</a>, and the problem they're solving seems very similar. They wanted to prevent the situation where a comment with 2 upvotes and 0 downvotes would outrank a comment with 100 upvotes and 2 downvotes (oversimplified from <a href="https://archive.md/Q3oC8">the full explanation</a>).</p>
+<p>The algorithm that they decided on was the Wilson score interval, invented in 1927. For the curious, here's the math:</p>
+<img
+  src="wilson-score-interval.png"
+  style="width:100%;"
+/>
+<p>The way this works is that the formula tries to "predict" the final ratio of upvotes vs. downvotes, or in my case, the ratio between matches and non-matches. Another way to think about it is that it balances the ratio with the uncertainty of a small number of observations. Of course, this uncertainty means that you'll have to set a confidence interval (I chose 95%, the reason is left as an exercise to the reader).</p>
+<h2 id="does-it-work">Does it work?</h2>
+<p>I went ahead and implemented this in a Jupyter notebook, calculating a score (<code>bad_match_score</code>) for each business that represents how bad receipt matching is for them:</p>
+<img
+  src="wilson-implementation.png"
+  style="width:100%;"
+/>
+<p>It worked pretty well! Notice how the businesses with some matched receipts out of thousands of submitted receipts are prioritized over businesses with 0 matched receipts out of only a few hundred.</p>
+<p>Side note: don't be alarmed by the high "match not found" rates, I was too lazy to filter out certain irrelevant receipts. The actual rate is much lower, even for outliers.</p>
+<h2 id="what-s-next">What's next?</h2>
+<p>A modified version of this algorithm will be built into an automated system I've started designing. If you'd like to work on such projects with me, <a href="https://ramp.com/careers">Ramp is hiring</a>!</p>
+</div>
+</div>
+    </section>
+  </body>
+</html>
